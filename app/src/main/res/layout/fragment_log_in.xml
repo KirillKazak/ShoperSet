@@ -79,6 +79,17 @@
         app:layout_constraintTop_toBottomOf="@id/edt_first_name_log_in"
         tools:ignore="Autofill" />
 
+    <ImageView
+        android:id="@+id/iv_password_visibility"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/icon_password_visibility_off"
+        android:layout_marginEnd="@dimen/margin_small"
+        app:layout_constraintTop_toTopOf="@id/edt_password_log_in"
+        app:layout_constraintBottom_toBottomOf="@id/edt_password_log_in"
+        app:layout_constraintEnd_toEndOf="@id/edt_password_log_in"
+        tools:ignore="ContentDescription" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_log_in"
         android:layout_width="match_parent"

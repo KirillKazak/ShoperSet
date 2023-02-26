@@ -8,9 +8,12 @@ import com.kazak.kirill.shoperset.domain.credentials.model.UserCredentialsModel
 import com.kazak.kirill.shoperset.util.Constants.ENTER_EMAIL_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.ENTER_FIRST_NAME_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.ENTER_LAST_NAME_MESSAGE
+import com.kazak.kirill.shoperset.util.Constants.ENTER_PASSWORD_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.FIRST_USER_CREDENTIALS_ID
 import com.kazak.kirill.shoperset.util.Constants.INCORRECT_EMAIL_MESSAGE
+import com.kazak.kirill.shoperset.util.Constants.SUCCESS_LOG_IN_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.SUCCESS_SIGN_IN_MESSAGE
+import com.kazak.kirill.shoperset.util.Constants.USER_NOT_EXIST_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.USER_WITH_THIS_EMAIL_EXISTS_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.USER_WITH_THIS_NAME_EXISTS_MESSAGE
 
@@ -57,7 +60,7 @@ class UserCredentialsRepositoryImpl(
             }
             else -> {
                 if (!checkDoesUserWithThisCredentialsExist(firstName, lastName, email)
-                    {errorMessage.invoke(it)}) {
+                    {errorMessage.invoke(it)} ){
                     saveUserCredentials(
                         UserCredentialsModel(
                             userId = generateCredentialsId(),
@@ -67,6 +70,24 @@ class UserCredentialsRepositoryImpl(
                         )
                     )
                 }
+            }
+        }
+    }
+
+    override fun checkUserCredentialsOnLogIn(
+        firstName: String,
+        password: String,
+        errorMessage: (String) -> Unit
+    ) {
+        when {
+            TextUtils.isEmpty(firstName) -> {
+                errorMessage.invoke(ENTER_FIRST_NAME_MESSAGE)
+            }
+            TextUtils.isEmpty(password) -> {
+                errorMessage.invoke(ENTER_PASSWORD_MESSAGE)
+            }
+            else -> {
+                checkLoginWithFirstName(firstName) {errorMessage.invoke(it)}
             }
         }
     }
@@ -92,6 +113,7 @@ class UserCredentialsRepositoryImpl(
         val firstAndLastUserName = firstName + lastName
         var isExist = false
         var message = SUCCESS_SIGN_IN_MESSAGE
+
         for (i in userCredentialsList) {
             if (i.userFirstName + i.userLastName == firstAndLastUserName) {
                 message = USER_WITH_THIS_NAME_EXISTS_MESSAGE
@@ -108,5 +130,24 @@ class UserCredentialsRepositoryImpl(
         }
         errorMessage.invoke(message)
         return isExist
+    }
+
+    private fun checkLoginWithFirstName(firstName: String, errorMessage: (String) -> Unit) {
+        val userCredentialsList = getUserCredentialsList()
+        var isSuccess = false
+
+        for (i in userCredentialsList) {
+            if (i.userFirstName == firstName) {
+                errorMessage.invoke(SUCCESS_LOG_IN_MESSAGE)
+                isSuccess = true
+                break
+            } else {
+                isSuccess = false
+            }
+        }
+
+        if (!isSuccess) {
+            errorMessage.invoke(USER_NOT_EXIST_MESSAGE)
+        }
     }
 }

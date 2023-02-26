@@ -1,9 +1,6 @@
 package com.kazak.kirill.shoperset.di
 
-import com.kazak.kirill.shoperset.domain.credentials.useCase.CheckUserCredentialsOnSignInUseCase
-import com.kazak.kirill.shoperset.domain.credentials.useCase.DeleteUserCredentialsUseCase
-import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserCredentialsListUseCase
-import com.kazak.kirill.shoperset.domain.credentials.useCase.SaveUserCredentialsUseCase
+import com.kazak.kirill.shoperset.domain.credentials.useCase.*
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -22,5 +19,9 @@ val domainModule = module {
 
     factory<CheckUserCredentialsOnSignInUseCase> {
         CheckUserCredentialsOnSignInUseCase(userCredentialsRepository = get())
+    }
+
+    factory<CheckUserCredentialsOnLogInUseCase> {
+        CheckUserCredentialsOnLogInUseCase(userCredentialsRepository = get())
     }
 }
