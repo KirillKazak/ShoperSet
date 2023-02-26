@@ -1,4 +1,4 @@
-package com.kazak.kirill.util.customViews
+package com.kazak.kirill.shoperset.util.customViews
 
 import android.content.Context
 import android.util.AttributeSet
