@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.kazak.kirill'
+    namespace 'com.kazak.kirill.shoperset'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.kazak.kirill"
+        applicationId "com.kazak.kirill.shoperset"
         minSdk 24
         targetSdk 33
         versionCode 1

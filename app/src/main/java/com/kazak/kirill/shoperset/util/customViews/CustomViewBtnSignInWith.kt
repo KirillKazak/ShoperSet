@@ -4,8 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.kazak.kirill.R
-import com.kazak.kirill.databinding.CustomViewBtnSignInWithBinding
+import com.kazak.kirill.shoperset.R
+import com.kazak.kirill.shoperset.databinding.CustomViewBtnSignInWithBinding
+
 
 class CustomViewBtnSignInWith(context: Context, attrs: AttributeSet): LinearLayout(context, attrs) {
 

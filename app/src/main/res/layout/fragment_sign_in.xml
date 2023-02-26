@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".shoperset.ui.signIn.SignInFragment">
+    tools:context=".ui.signIn.SignInFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_hor_15_sign_in"
@@ -141,7 +141,7 @@
         app:layout_constraintStart_toEndOf="@id/tv_already_have_an_account_sign_in"
         app:layout_constraintTop_toBottomOf="@id/btn_sign_in"/>
 
-    <com.kazak.kirill.util.customViews.CustomViewBtnSignInWith
+    <com.kazak.kirill.shoperset.util.customViews.CustomViewBtnSignInWith
         android:id="@+id/btn_sign_in_with_google"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_already_have_an_account_sign_in"
         app:layout_constraintBottom_toTopOf="@id/btn_sign_in_with_apple"/>
 
-    <com.kazak.kirill.util.customViews.CustomViewBtnSignInWith
+    <com.kazak.kirill.shoperset.util.customViews.CustomViewBtnSignInWith
         android:id="@+id/btn_sign_in_with_apple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
