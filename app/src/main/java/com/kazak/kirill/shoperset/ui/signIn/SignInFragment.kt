@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentSignInBinding
@@ -17,6 +18,7 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         super.onViewCreated(view, savedInstanceState)
         startObserveAuthorizationMessageLiveData()
         onBtnSignClick()
+        onTvLogInClick()
     }
 
     private fun onBtnSignClick() {
@@ -28,6 +30,12 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
                     email = edtEmailSignIn.text.toString()
                 )
             }
+        }
+    }
+
+    private fun onTvLogInClick() {
+        vb.tvLogIn.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_logInFragment)
         }
     }
 

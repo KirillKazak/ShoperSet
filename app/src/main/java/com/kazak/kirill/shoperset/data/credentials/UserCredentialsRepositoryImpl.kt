@@ -52,13 +52,12 @@ class UserCredentialsRepositoryImpl(
             TextUtils.isEmpty(email) -> {
                 errorMessage.invoke(ENTER_EMAIL_MESSAGE)
             }
-            !email.isEmailValid() ->
+            !email.isEmailValid() -> {
                 errorMessage.invoke(INCORRECT_EMAIL_MESSAGE)
+            }
             else -> {
-
                 if (!checkDoesUserWithThisCredentialsExist(firstName, lastName, email)
                     {errorMessage.invoke(it)}) {
-
                     saveUserCredentials(
                         UserCredentialsModel(
                             userId = generateCredentialsId(),
@@ -93,17 +92,18 @@ class UserCredentialsRepositoryImpl(
         val firstAndLastUserName = firstName + lastName
         var isExist = false
         var message = SUCCESS_SIGN_IN_MESSAGE
-
         for (i in userCredentialsList) {
             if (i.userFirstName + i.userLastName == firstAndLastUserName) {
                 message = USER_WITH_THIS_NAME_EXISTS_MESSAGE
                 isExist = true
+                break
             } else if (i.userEmail == email) {
                 message = USER_WITH_THIS_EMAIL_EXISTS_MESSAGE
                 isExist = true
+                break
             } else {
                 message = SUCCESS_SIGN_IN_MESSAGE
-                isExist = true
+                isExist = false
             }
         }
         errorMessage.invoke(message)
