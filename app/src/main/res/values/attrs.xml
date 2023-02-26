@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomViewBtnSignInWith">
+        <attr name="icon_logo" format="integer"/>
+        <attr name="sign_in_with" format="string"/>/>
+    </declare-styleable>
+</resources>

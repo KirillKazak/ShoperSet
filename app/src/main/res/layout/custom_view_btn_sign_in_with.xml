@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_sign_in_with"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_btn_sign_in_with"
+        android:elevation="2dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        tools:ignore="UseCompoundDrawables"
+        android:elevation="10dp">
+        <ImageView
+            android:id="@+id/iv_logo_sign_in_with"
+            android:layout_width="@dimen/size_logo"
+            android:layout_height="@dimen/size_logo"
+            android:background="@drawable/icon_logo_google"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_sign_in_with"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in_with_google"
+            android:textColor="@color/black"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:textSize="@dimen/text_size_medium"
+            android:paddingStart="@dimen/margin_extra_small"
+            android:layout_gravity="center_vertical"
+            tools:ignore="RtlSymmetry" />
+    </LinearLayout>
+</FrameLayout>

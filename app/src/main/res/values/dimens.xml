@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_extra_large">24sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_regular">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+
+    <dimen name="margin_extra_large">36dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_small">12dp</dimen>
+    <dimen name="margin_extra_small">8dp</dimen>
+
+    <dimen name="size_logo">30dp</dimen>
+
+    <dimen name="radius_edt_background">20dp</dimen>
+    <dimen name="height_edt_background">36dp</dimen>
+
+    <dimen name="radius_btn_authorization">18dp</dimen>
+    <dimen name="height_btn_authorization">56dp</dimen>
+</resources>
