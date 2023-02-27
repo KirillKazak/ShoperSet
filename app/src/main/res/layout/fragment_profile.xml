@@ -165,6 +165,8 @@
                 android:id="@+id/item_log_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 app:icon_item="@drawable/icon_log_out"
                 app:name_item="@string/log_out"
                 app:visibility_balance="invisible"

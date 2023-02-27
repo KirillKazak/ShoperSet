@@ -78,7 +78,6 @@ class LogInFragment : Fragment(R.layout.fragment_log_in) {
 
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             if (message == SUCCESS_LOG_IN_MESSAGE) {
-
                 bottomNavigationView.visibility = View.VISIBLE
                 findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
             }

@@ -9,6 +9,7 @@ import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.CustomViewItemProfileBinding
 
 class CustomViewItemProfile(context: Context, attrs: AttributeSet): LinearLayout(context, attrs) {
+    var onItemClickListener: OnItemClickListener? = null
 
     private val vbItemProfile = CustomViewItemProfileBinding.inflate(
         LayoutInflater.from(context), this, false
@@ -28,6 +29,10 @@ class CustomViewItemProfile(context: Context, attrs: AttributeSet): LinearLayout
             ivItemImage.background = iconItem
             tvItemName.text = nameItem
 
+            customViewItemProfile.setOnClickListener {
+                onItemClickListener?.onItemClick()
+            }
+
             if (visibilityBalance == "visible") {
                 ivArrow.visibility = View.INVISIBLE
                 tvBalanceScore.visibility = View.VISIBLE
@@ -36,5 +41,9 @@ class CustomViewItemProfile(context: Context, attrs: AttributeSet): LinearLayout
                 tvBalanceScore.visibility = View.INVISIBLE
             }
         }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick ()
     }
 }
