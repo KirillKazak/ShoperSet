@@ -8,8 +8,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentLogInBinding
+import com.kazak.kirill.shoperset.util.Constants.SUCCESS_LOG_IN_MESSAGE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LogInFragment : Fragment(R.layout.fragment_log_in) {
@@ -44,11 +46,17 @@ class LogInFragment : Fragment(R.layout.fragment_log_in) {
             setOnClickListener {
                 if (!iconIsClick) {
                     setBackgroundResource(R.drawable.icon_password_visibility)
-                    vb.edtPasswordLogIn.transformationMethod = HideReturnsTransformationMethod.getInstance()
+
+                    vb.edtPasswordLogIn.transformationMethod =
+                        HideReturnsTransformationMethod.getInstance()
+
                     iconIsClick = true
                 } else {
                     setBackgroundResource(R.drawable.icon_password_visibility_off)
-                    vb.edtPasswordLogIn.transformationMethod = PasswordTransformationMethod.getInstance()
+
+                    vb.edtPasswordLogIn.transformationMethod =
+                        PasswordTransformationMethod.getInstance()
+
                     iconIsClick = false
                 }
             }
@@ -65,7 +73,15 @@ class LogInFragment : Fragment(R.layout.fragment_log_in) {
 
     private fun startObserveLoginMessageLiveData() {
         vm.logInMessageLiveData.observe(viewLifecycleOwner) { message ->
+            val bottomNavigationView =
+                requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+            if (message == SUCCESS_LOG_IN_MESSAGE) {
+
+                bottomNavigationView.visibility = View.VISIBLE
+                findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+            }
         }
     }
 }

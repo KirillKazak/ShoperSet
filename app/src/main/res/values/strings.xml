@@ -24,5 +24,9 @@
     <string name="restore_purchase">Restore Purchase</string>
     <string name="help">Help</string>
     <string name="log_out">Log out</string>
+    <string name="home">Home</string>
+    <string name="likes">Likes</string>
+    <string name="basket">Basket</string>
+    <string name="messages">Messages</string>
 
 </resources>

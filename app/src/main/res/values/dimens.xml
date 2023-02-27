@@ -28,5 +28,6 @@
     <dimen name="height_arrow_profile_item">16dp</dimen>
 
     <dimen name="elevation_top">8dp</dimen>
+    <dimen name="radius_top_tab_layout">24dp</dimen>
 
 </resources>
