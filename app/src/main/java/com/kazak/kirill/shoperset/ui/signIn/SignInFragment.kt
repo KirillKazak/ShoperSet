@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentSignInBinding
@@ -15,14 +16,15 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startObserveAuthorizationMessageLiveData()
-        onBtnSignClick()
+        startObserveSignInMessageLiveData()
+        onBtnSignInClick()
+        onTvLogInClick()
     }
 
-    private fun onBtnSignClick() {
+    private fun onBtnSignInClick() {
         with(vb) {
             btnSignIn.setOnClickListener {
-                vm.getAuthorizationMessage(
+                vm.getSignInMessage(
                     firstName = edtFirstNameSignIn.text.toString(),
                     lastName = edtLastNameSignIn.text.toString(),
                     email = edtEmailSignIn.text.toString()
@@ -31,8 +33,14 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         }
     }
 
-    private fun startObserveAuthorizationMessageLiveData() {
-        vm.authorizationMessageLiveData.observe(viewLifecycleOwner) { message ->
+    private fun onTvLogInClick() {
+        vb.tvLogIn.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_logInFragment)
+        }
+    }
+
+    private fun startObserveSignInMessageLiveData() {
+        vm.signInMessageLiveData.observe(viewLifecycleOwner) { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
     }

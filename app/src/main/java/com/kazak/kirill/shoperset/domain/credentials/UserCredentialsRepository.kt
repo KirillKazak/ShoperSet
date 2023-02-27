@@ -13,4 +13,9 @@ interface UserCredentialsRepository {
         email: String,
         errorMessage: (String) -> Unit
     )
+    fun checkUserCredentialsOnLogIn(
+        firstName: String,
+        password: String,
+        errorMessage: (String) -> Unit
+    )
 }

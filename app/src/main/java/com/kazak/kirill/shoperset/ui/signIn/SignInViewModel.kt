@@ -7,16 +7,16 @@ import com.kazak.kirill.shoperset.domain.credentials.useCase.CheckUserCredential
 class SignInViewModel(
     private val checkUserCredentialsOnSignInUseCase: CheckUserCredentialsOnSignInUseCase
 ): ViewModel() {
-    val authorizationMessageLiveData = MutableLiveData<String>()
+    val signInMessageLiveData = MutableLiveData<String>()
 
-    fun getAuthorizationMessage(
+    fun getSignInMessage(
         firstName: String,
         lastName: String,
         email: String
     ) {
         checkUserCredentialsOnSignInUseCase.checkUserCredentialsOnSignIn(
             firstName, lastName, email) { message ->
-            authorizationMessageLiveData.value = message
+            signInMessageLiveData.value = message
         }
     }
 }

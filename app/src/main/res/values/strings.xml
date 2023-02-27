@@ -1,11 +1,16 @@
 <resources>
     <string name="app_name">ShoperSet</string>
     <string name="sign_in_title">Sign in</string>
+    <string name="log_in_title">Welcome back</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="have_not_an_account">Don\'t have an account</string>
     <string name="log_in">Log in</string>
+    <string name="login">Login</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="sign_in_with_apple">Sign in with Apple</string>
-    <string name="email">Email</string>
+
 </resources>
