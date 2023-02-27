@@ -12,10 +12,21 @@
     <dimen name="margin_extra_small">8dp</dimen>
 
     <dimen name="size_logo">30dp</dimen>
+    <dimen name="size_user_image">70dp</dimen>
+    <dimen name="size_arrow_back">30dp</dimen>
+    <dimen name="size_icon_share">20dp</dimen>
+    <dimen name="size_image_background_profile_item">34dp</dimen>
+    <dimen name="size_item_image">20dp</dimen>
 
     <dimen name="radius_edt_background">20dp</dimen>
     <dimen name="height_edt_background">36dp</dimen>
 
     <dimen name="radius_btn_authorization">18dp</dimen>
     <dimen name="height_btn_authorization">56dp</dimen>
+
+    <dimen name="width_arrow_profile_item">12dp</dimen>
+    <dimen name="height_arrow_profile_item">16dp</dimen>
+
+    <dimen name="elevation_top">8dp</dimen>
+
 </resources>

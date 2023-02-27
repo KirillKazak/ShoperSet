@@ -2,6 +2,7 @@
     <string name="app_name">ShoperSet</string>
     <string name="sign_in_title">Sign in</string>
     <string name="log_in_title">Welcome back</string>
+    <string name="profile_title">Profile</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
     <string name="email">Email</string>
@@ -12,5 +13,16 @@
     <string name="login">Login</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="sign_in_with_apple">Sign in with Apple</string>
+    <string name="change_photo">Change photo</string>
+    <string name="default_user_name">Satria Adhi Pradana</string>
+    <string name="upload_item">Upload item</string>
+    <string name="trade_store">Trade store</string>
+    <string name="balance_score">$ 1593</string>
+    <string name="payment_method">Payment method</string>
+    <string name="balance">Balance</string>
+    <string name="trade_history">Trade history</string>
+    <string name="restore_purchase">Restore Purchase</string>
+    <string name="help">Help</string>
+    <string name="log_out">Log out</string>
 
 </resources>
