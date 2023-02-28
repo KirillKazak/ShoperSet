@@ -13,6 +13,9 @@ interface UserCredentialsDao {
     @Query("SELECT * FROM $USER_CREDENTIALS_TABLE_NAME ORDER BY userId DESC")
     fun getUserCredentialsList(): List<UserCredentialsEntity>
 
+    @Query("SELECT * FROM $USER_CREDENTIALS_TABLE_NAME WHERE userId=:userId ")
+    fun getUserCredentialsById(userId: Int): UserCredentialsEntity
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveUserCredentials(userCredentials: UserCredentialsEntity)
 

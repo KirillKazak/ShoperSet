@@ -6,8 +6,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentSignInBinding
+import com.kazak.kirill.shoperset.util.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SignInFragment : Fragment(R.layout.fragment_sign_in) {
@@ -41,7 +43,16 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     private fun startObserveSignInMessageLiveData() {
         vm.signInMessageLiveData.observe(viewLifecycleOwner) { message ->
+            val bottomNavigationView =
+                requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
+            if (message == Constants.SUCCESS_SIGN_IN_MESSAGE) {
+
+                bottomNavigationView.visibility = View.VISIBLE
+                findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
+            }
         }
     }
 }

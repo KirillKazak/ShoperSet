@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_view_item_profile"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_image_background_profile_item"
+    android:background="@drawable/background_btn_sign_in_with"
+    android:clickable="true"
+    android:focusable="true">
+
+
+    <FrameLayout
+        android:id="@+id/icon_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        tools:ignore="UselessLeaf,UselessParent">
+        <ImageView
+            android:layout_width="@dimen/size_image_background_profile_item"
+            android:layout_height="@dimen/size_image_background_profile_item"
+            android:background="@drawable/grey_circle"
+            tools:ignore="ContentDescription" />
+        <ImageView
+            android:id="@+id/iv_item_image"
+            android:layout_width="@dimen/size_item_image"
+            android:layout_height="@dimen/size_item_image"
+            android:background="@drawable/icon_credit_card"
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trade_store"
+        android:fontFamily="@font/montserrat_medium"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_regular"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/margin_small"
+        android:layout_toEndOf="@+id/icon_frame"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"/>
+
+    <FrameLayout
+        android:id="@+id/score_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="RelativeOverlap,UselessLeaf,UselessParent">
+        <TextView
+            android:id="@+id/tv_balance_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance_score"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat_medium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_regular"
+            android:visibility="invisible"/>
+
+        <ImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="@dimen/width_arrow_profile_item"
+            android:layout_height="@dimen/height_arrow_profile_item"
+            android:background="@drawable/icon_arrow"
+            android:layout_gravity="center_vertical|end"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_regular"
+            tools:ignore="ContentDescription" />
+    </FrameLayout>
+</RelativeLayout>

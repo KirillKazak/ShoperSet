@@ -13,4 +13,5 @@
     <color name="color_btn_authorization">#4E55D7</color>
     <color name="color_tv_authorization">#254FE6</color>
     <color name="color_ripple">#BEBEBE</color>
+    <color name="color_tab_layout">#F4F4F4</color>
 </resources>

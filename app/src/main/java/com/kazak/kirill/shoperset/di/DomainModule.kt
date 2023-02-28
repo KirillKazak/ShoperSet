@@ -9,6 +9,10 @@ val domainModule = module {
         GetUserCredentialsListUseCase(userCredentialsRepository = get())
     }
 
+    factory<GetUserCredentialsByIdUseCase> {
+        GetUserCredentialsByIdUseCase(userCredentialsRepository = get())
+    }
+
     factory<SaveUserCredentialsUseCase> {
         SaveUserCredentialsUseCase(userCredentialsRepository = get())
     }
