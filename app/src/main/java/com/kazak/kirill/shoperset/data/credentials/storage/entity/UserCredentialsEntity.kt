@@ -18,5 +18,8 @@ data class UserCredentialsEntity(
     val userLastName: String,
 
     @ColumnInfo(name = "userEmail")
-    val userEmail: String
+    val userEmail: String,
+
+    @ColumnInfo(name = "userPhoto")
+    val userPhoto: String
 )

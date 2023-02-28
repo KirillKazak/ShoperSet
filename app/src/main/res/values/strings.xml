@@ -28,5 +28,6 @@
     <string name="likes">Likes</string>
     <string name="basket">Basket</string>
     <string name="messages">Messages</string>
+    <string name="not_found">not found</string>
 
 </resources>

@@ -12,17 +12,19 @@ class UserCredentialsMapper {
             userId = userCredentialsModel.userId,
             userFirstName = userCredentialsModel.userFirstName,
             userLastName = userCredentialsModel.userLastName,
-            userEmail = userCredentialsModel.userEmail
+            userEmail = userCredentialsModel.userEmail,
+            userPhoto = userCredentialsModel.userPhoto
         )
 
-    private fun mapUserCredentialsEntityToModel(
+    fun mapUserCredentialsEntityToModel(
         userCredentialsEntity: UserCredentialsEntity
-    ) =
+    ): UserCredentialsModel =
         UserCredentialsModel(
-                    userId = userCredentialsEntity.userId,
-                    userFirstName = userCredentialsEntity.userFirstName,
-                    userLastName = userCredentialsEntity.userLastName,
-                    userEmail = userCredentialsEntity.userEmail
+            userId = userCredentialsEntity.userId,
+            userFirstName = userCredentialsEntity.userFirstName,
+            userLastName = userCredentialsEntity.userLastName,
+            userEmail = userCredentialsEntity.userEmail,
+            userPhoto = userCredentialsEntity.userPhoto
                 )
 
 

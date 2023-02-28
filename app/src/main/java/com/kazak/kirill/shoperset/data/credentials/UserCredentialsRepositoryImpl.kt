@@ -16,6 +16,7 @@ import com.kazak.kirill.shoperset.util.Constants.SUCCESS_SIGN_IN_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.USER_NOT_EXIST_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.USER_WITH_THIS_EMAIL_EXISTS_MESSAGE
 import com.kazak.kirill.shoperset.util.Constants.USER_WITH_THIS_NAME_EXISTS_MESSAGE
+import com.kazak.kirill.shoperset.util.UserId.Companion.currentUserId
 
 class UserCredentialsRepositoryImpl(
     private val userCredentialsStorage: UserCredentialsStorage
@@ -28,6 +29,8 @@ class UserCredentialsRepositoryImpl(
             userCredentialsStorage.getUserCredentialsList()
         )
 
+    override fun getUserCredentialsById(userId: Int): UserCredentialsModel =
+        mapper.mapUserCredentialsEntityToModel(userCredentialsStorage.getUserCredentialsById(userId))
 
     override fun saveUserCredentials(userCredentials: UserCredentialsModel) {
         userCredentialsStorage.saveUserCredentials(
@@ -61,14 +64,19 @@ class UserCredentialsRepositoryImpl(
             else -> {
                 if (!checkDoesUserWithThisCredentialsExist(firstName, lastName, email)
                     {errorMessage.invoke(it)} ){
+                    val generatedUserId = generateCredentialsId()
+
                     saveUserCredentials(
                         UserCredentialsModel(
-                            userId = generateCredentialsId(),
+                            userId = generatedUserId,
                             userFirstName = firstName,
                             userLastName = lastName,
-                            userEmail = email
+                            userEmail = email,
+                            userPhoto = ""
                         )
                     )
+
+                    currentUserId = generatedUserId
                 }
             }
         }
@@ -140,6 +148,7 @@ class UserCredentialsRepositoryImpl(
             if (i.userFirstName == firstName) {
                 errorMessage.invoke(SUCCESS_LOG_IN_MESSAGE)
                 isSuccess = true
+                currentUserId = i.userId
                 break
             } else {
                 isSuccess = false

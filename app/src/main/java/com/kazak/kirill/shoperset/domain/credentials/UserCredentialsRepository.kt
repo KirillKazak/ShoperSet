@@ -5,6 +5,7 @@ import com.kazak.kirill.shoperset.domain.credentials.model.UserCredentialsModel
 interface UserCredentialsRepository {
 
     fun getUserCredentialsList(): List<UserCredentialsModel>
+    fun getUserCredentialsById(userId: Int) : UserCredentialsModel
     fun saveUserCredentials(userCredentials: UserCredentialsModel)
     fun deleteUserCredentials()
     fun checkUserCredentialsOnSignIn(

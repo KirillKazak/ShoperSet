@@ -22,7 +22,9 @@ val appModule = module {
 
     viewModel<ProfileViewModel>{
         ProfileViewModel(
-            deleteUserCredentialsUseCase = get()
+            deleteUserCredentialsUseCase = get(),
+            getUserCredentialsByIdUseCase = get(),
+            saveUserCredentialsUseCase = get()
         )
     }
 }

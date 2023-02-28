@@ -21,6 +21,10 @@ class UserCredentialsStorageImpl(context: Context): UserCredentialsStorage {
     override fun getUserCredentialsList(): List<UserCredentialsEntity> =
         userCredentialsDatabase.userCredentialsItemDao().getUserCredentialsList()
 
+    override fun getUserCredentialsById(userId: Int): UserCredentialsEntity =
+        userCredentialsDatabase.userCredentialsItemDao().getUserCredentialsById(userId)
+
+
     override fun saveUserCredentials(userCredentials: UserCredentialsEntity) {
         userCredentialsDatabase.userCredentialsItemDao()
             .saveUserCredentials(userCredentials = userCredentials)
