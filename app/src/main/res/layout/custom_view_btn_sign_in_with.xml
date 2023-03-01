@@ -33,7 +33,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/montserrat_semi_bold"
             android:textSize="@dimen/text_size_medium"
-            android:paddingStart="@dimen/margin_extra_small"
+            android:paddingStart="@dimen/margin_little"
             android:layout_gravity="center_vertical"
             tools:ignore="RtlSymmetry" />
     </LinearLayout>

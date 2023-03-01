@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/custom_view_location"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_btn_sign_in_with">
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location"
+        android:textSize="@dimen/text_size_small"
+        android:textAlignment="center"
+        android:textColor="@color/color_hint"
+        android:fontFamily="@font/montserrat_medium"
+        android:paddingEnd="@dimen/margin_extra_little"
+        tools:ignore="RtlSymmetry" />
+
+    <ImageView
+        android:id="@+id/iv_arrow_location"
+        android:layout_width="@dimen/width_arrow_location"
+        android:layout_height="@dimen/height_arrow_location"
+        android:background="@drawable/icon_arrow_location"
+        android:layout_gravity="center"
+        tools:ignore="ContentDescription" />
+</LinearLayout>

@@ -81,8 +81,8 @@
 
     <ImageView
         android:id="@+id/iv_password_visibility"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/size_password_visibility"
+        android:layout_height="@dimen/size_password_visibility"
         android:background="@drawable/icon_password_visibility_off"
         android:layout_marginEnd="@dimen/margin_small"
         app:layout_constraintTop_toTopOf="@id/edt_password_log_in"

@@ -5,11 +5,16 @@
     <dimen name="text_size_medium">16sp</dimen>
     <dimen name="text_size_regular">14sp</dimen>
     <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_extra_small">8sp</dimen>
+    <dimen name="text_size_super_small">6sp</dimen>
 
+    <dimen name="margin_super_large">56dp</dimen>
     <dimen name="margin_extra_large">36dp</dimen>
     <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_super_small">16dp</dimen>
     <dimen name="margin_small">12dp</dimen>
-    <dimen name="margin_extra_small">8dp</dimen>
+    <dimen name="margin_little">8dp</dimen>
+    <dimen name="margin_extra_little">4dp</dimen>
 
     <dimen name="size_logo">30dp</dimen>
     <dimen name="size_user_image">70dp</dimen>
@@ -17,9 +22,16 @@
     <dimen name="size_icon_share">20dp</dimen>
     <dimen name="size_image_background_profile_item">34dp</dimen>
     <dimen name="size_item_image">20dp</dimen>
+    <dimen name="size_user_photo_home">40dp</dimen>
+    <dimen name="size_password_visibility">24dp</dimen>
+    <dimen name="size_search_home">18dp</dimen>
+    <dimen name="size_add_to_basket_latest">20dp</dimen>
+    <dimen name="size_add_to_likes_latest">16dp</dimen>
+    <dimen name="size_salesmen_photo">30dp</dimen>
 
     <dimen name="radius_edt_background">20dp</dimen>
     <dimen name="height_edt_background">36dp</dimen>
+    <dimen name="height_edt_looking_for">24dp</dimen>
 
     <dimen name="radius_btn_authorization">18dp</dimen>
     <dimen name="height_btn_authorization">56dp</dimen>
@@ -27,7 +39,19 @@
     <dimen name="width_arrow_profile_item">12dp</dimen>
     <dimen name="height_arrow_profile_item">16dp</dimen>
 
+    <dimen name="width_arrow_location">10dp</dimen>
+    <dimen name="height_arrow_location">6dp</dimen>
+
+    <dimen name="width_burger">28dp</dimen>
+    <dimen name="height_burger">30dp</dimen>
+
+    <dimen name="width_item_flash_sale">160dp</dimen>
+    <dimen name="height_item_flash_sale">190dp</dimen>
+
+    <dimen name="width_item_latest">110dp</dimen>
+    <dimen name="height_item_latest">140dp</dimen>
+
     <dimen name="elevation_top">8dp</dimen>
     <dimen name="radius_top_tab_layout">24dp</dimen>
-
+    <dimen name="radius_item_latest">16dp</dimen>
 </resources>

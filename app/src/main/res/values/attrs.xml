@@ -10,4 +10,6 @@
         <attr name="name_item" format="string"/>
         <attr name="visibility_balance" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="CustomViewLocation"/>
 </resources>
