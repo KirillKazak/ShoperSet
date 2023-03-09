@@ -1,5 +1,6 @@
 package com.kazak.kirill.shoperset.di
 
+import com.kazak.kirill.shoperset.ui.home.HomeViewModel
 import com.kazak.kirill.shoperset.ui.logIn.LogInViewModel
 import com.kazak.kirill.shoperset.ui.profile.ProfileViewModel
 import com.kazak.kirill.shoperset.ui.signIn.SignInViewModel
@@ -25,6 +26,13 @@ val appModule = module {
             deleteUserCredentialsUseCase = get(),
             getUserCredentialsByIdUseCase = get(),
             saveUserCredentialsUseCase = get()
+        )
+    }
+
+    viewModel<HomeViewModel>{
+        HomeViewModel(
+            getLatestSearchProductUseCase = get(),
+            getFlashSaleProductsUseCase = get()
         )
     }
 }

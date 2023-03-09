@@ -29,5 +29,19 @@
     <string name="basket">Basket</string>
     <string name="messages">Messages</string>
     <string name="not_found">not found</string>
+    <string name="trade_by">Trade by</string>
+    <string name="bata">\u0020bata</string>
+    <string name="location">Location</string>
+    <string name="looking_for">What are you looking for?</string>
+    <string name="phones">Phones</string>
+    <string name="headphones">Headphones</string>
+    <string name="games">Games</string>
+    <string name="cars">Cars</string>
+    <string name="furniture">Furniture</string>
+    <string name="kids">Kids</string>
+    <string name="latest">Latest</string>
+    <string name="view_all">View all</string>
+    <string name="flash_sale">Flash Sale</string>
+    <string name="sale">30% off</string>
 
 </resources>

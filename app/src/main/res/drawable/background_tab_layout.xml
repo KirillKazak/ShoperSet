@@ -3,7 +3,7 @@
     <item>
         <shape>
             <solid android:color="@color/color_tab_layout"/>
-            <corners android:topLeftRadius="@dimen/radius_top_tab_layout" android:topRightRadius="24dp"/>
+            <corners android:topLeftRadius="@dimen/radius_top_tab_layout" android:topRightRadius="@dimen/radius_top_tab_layout"/>
         </shape>
     </item>
 </selector>
