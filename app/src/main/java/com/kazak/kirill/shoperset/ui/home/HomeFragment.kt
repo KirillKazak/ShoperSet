@@ -1,4 +1,4 @@
-package com.kazak.kirill.shoperset.ui
+package com.kazak.kirill.shoperset.ui.home
 
 import androidx.fragment.app.Fragment
 import com.kazak.kirill.shoperset.R
