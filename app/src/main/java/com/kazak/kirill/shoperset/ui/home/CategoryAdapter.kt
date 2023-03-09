@@ -1,53 +1,72 @@
 package com.kazak.kirill.shoperset.ui.home
 
 import android.annotation.SuppressLint
-import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.kazak.kirill.shoperset.R
 
-class CategoryAdapter (private val context: Context):
-    RecyclerView.Adapter<TodayAdapter.TodayViewHolder>(), DateConverter {
+class CategoryAdapter:
+    RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
+    var onCategoryItemClickListener: OnCategoryItemClickListener? = null
 
-    var weatherList = listOf<WaetherList>()
-        @SuppressLint("NotifyDataSetChanged")
-        set(value) {
-            field = value
-            notifyDataSetChanged()
+    var categoryList = arrayListOf<Category>()
+    @SuppressLint("NotifyDataSetChanged")
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
+
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_category, parent, false)
+        return CategoryViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+        val item= categoryList[position]
+
+        holder.ivImageCategory.setBackgroundResource(item.categoryImage)
+        holder.tvTitleCategory.text = item.categoryName
+
+        if (item.isClick) {
+            holder.greyCircleCategory.setBackgroundResource(R.drawable.grey_circle_active)
+        } else {
+            holder.greyCircleCategory.setBackgroundResource(R.drawable.grey_circle)
         }
 
+        holder.ivImageCategory.setOnClickListener {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.today_custom_view, parent, false)
-        return TodayViewHolder(view)
+            onCategoryItemClickListener?.onCategoryItemClick(position)
+            Log.d("POSITIONN", position.toString())
+        }
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
-        val itemWeatherToday= weatherList[position]
-
-        holder.tvTimeToday.text = "${convertCurrentDate(itemWeatherToday.dtTxt)[4]}:${convertCurrentDate(itemWeatherToday.dtTxt)[5]}"
-        Glide.with(holder.ivWeatherToday)
-            .load(Constants.WEATHER_API_IMAGE_LINK + itemWeatherToday.weather[0].icon + "@2x.png")
-            .into(holder.ivWeatherToday)
-        holder.tvTemperatureToday.text = itemWeatherToday.main.temp.toInt().toString() + context.getString(R.string.сelsius)
-    }
-
-    override fun getItemCount(): Int = weatherList.size
+    override fun getItemCount(): Int = categoryList.size
 
     override fun getItemViewType(position: Int): Int {
         return position
     }
 
-    class TodayViewHolder(view: View) :
+    class CategoryViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
-        val tvTimeToday: TextView = view.findViewById(R.id.tv_time_today)
-        val ivWeatherToday: ImageView = view.findViewById(R.id.iv_weather_today)
-        val tvTemperatureToday: TextView = view.findViewById(R.id.tv_temperature_today)
+        val greyCircleCategory: ImageView = view.findViewById(R.id.grey_circle_category)
+        val ivImageCategory: ImageView = view.findViewById(R.id.iv_image_category)
+        val tvTitleCategory: TextView = view.findViewById(R.id.tv_title_category)
+    }
+
+    class Category (
+        val categoryImage: Int,
+        val categoryName: String,
+        var isClick: Boolean
+    )
+
+    interface OnCategoryItemClickListener {
+        fun onCategoryItemClick(position: Int)
     }
 }

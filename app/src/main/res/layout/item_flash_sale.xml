@@ -9,16 +9,16 @@
     app:cardCornerRadius="@dimen/radius_item_latest"
     app:cardMaxElevation="@dimen/elevation_top">
 
+    <ImageView
+        android:id="@+id/iv_image_flash_sale_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:ignore="ContentDescription" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/iv_image_flash_sale_item"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/black"
-            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_sale_flash_sale_item"
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:textColor="@color/white"
+            android:textColor="@color/color_text_product"
             android:textSize="@dimen/text_size_extra_small"
             android:paddingHorizontal="@dimen/margin_extra_little"
             android:layout_marginStart="@dimen/margin_small"
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:textColor="@color/white"
+            android:textColor="@color/color_text_product"
             android:textSize="@dimen/text_size_extra_small"
             android:paddingHorizontal="@dimen/margin_extra_little"
             android:layout_marginStart="@dimen/margin_small"

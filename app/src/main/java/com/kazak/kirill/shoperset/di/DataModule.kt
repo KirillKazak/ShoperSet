@@ -1,11 +1,11 @@
 package com.kazak.kirill.shoperset.di
 
-import com.kazak.kirill.shoperset.data.category.CategoryRepositoryImpl
 import com.kazak.kirill.shoperset.data.credentials.UserCredentialsRepositoryImpl
 import com.kazak.kirill.shoperset.data.credentials.storage.UserCredentialsStorage
 import com.kazak.kirill.shoperset.data.credentials.storage.UserCredentialsStorageImpl
-import com.kazak.kirill.shoperset.domain.category.CategoryRepository
+import com.kazak.kirill.shoperset.data.latestSearch.LatestSearchRepositoryImpl
 import com.kazak.kirill.shoperset.domain.credentials.UserCredentialsRepository
+import com.kazak.kirill.shoperset.domain.latestSearch.ProductsRepository
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -21,8 +21,9 @@ val dataModule = module {
 
 
 
-    //Category
-    single<CategoryRepository> {
-        CategoryRepositoryImpl(context = get())
+
+
+    single<ProductsRepository> {
+        LatestSearchRepositoryImpl()
     }
 }

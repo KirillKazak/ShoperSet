@@ -87,7 +87,7 @@
             android:maxLength="30"
             android:lines="1"
             android:singleLine="true"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:layout_marginHorizontal="@dimen/margin_super_large"
             android:layout_marginTop="@dimen/margin_large"
             app:layout_constraintTop_toBottomOf="@id/custom_view_location_home"
@@ -106,7 +106,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_category_home"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/margin_large"
@@ -148,7 +148,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_latest_home"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -189,7 +189,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_flash_sale_home"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -197,11 +197,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_flash_sale_home"
             tools:listitem="@layout/item_flash_sale"/>
-
-
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

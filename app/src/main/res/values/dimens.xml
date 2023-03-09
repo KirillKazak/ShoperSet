@@ -20,7 +20,7 @@
     <dimen name="size_user_image">70dp</dimen>
     <dimen name="size_arrow_back">30dp</dimen>
     <dimen name="size_icon_share">20dp</dimen>
-    <dimen name="size_image_background_profile_item">34dp</dimen>
+    <dimen name="size_image_background_profile_item">40dp</dimen>
     <dimen name="size_item_image">20dp</dimen>
     <dimen name="size_user_photo_home">40dp</dimen>
     <dimen name="size_password_visibility">24dp</dimen>
