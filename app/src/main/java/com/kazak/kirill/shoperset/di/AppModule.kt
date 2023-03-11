@@ -2,6 +2,7 @@ package com.kazak.kirill.shoperset.di
 
 import com.kazak.kirill.shoperset.ui.home.HomeViewModel
 import com.kazak.kirill.shoperset.ui.logIn.LogInViewModel
+import com.kazak.kirill.shoperset.ui.product.ProductViewModel
 import com.kazak.kirill.shoperset.ui.profile.ProfileViewModel
 import com.kazak.kirill.shoperset.ui.signIn.SignInViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -32,7 +33,12 @@ val appModule = module {
     viewModel<HomeViewModel>{
         HomeViewModel(
             getLatestSearchProductUseCase = get(),
-            getFlashSaleProductsUseCase = get()
+            getFlashSaleProductsUseCase = get(),
+            getProductInformationUseCase = get()
         )
+    }
+
+    viewModel<ProductViewModel>{
+        ProductViewModel()
     }
 }

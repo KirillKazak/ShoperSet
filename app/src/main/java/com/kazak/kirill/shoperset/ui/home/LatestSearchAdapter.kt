@@ -11,8 +11,8 @@ import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.domain.latestSearch.model.latestSearch.LatestModel
 
-class LatestSearchAdapter:
-    RecyclerView.Adapter<LatestSearchAdapter.LatestSearchViewHolder>() {
+class LatestSearchAdapter: RecyclerView.Adapter<LatestSearchAdapter.LatestSearchViewHolder>() {
+    var onItemClickListener: OnItemClickListener? = null
 
     var latestSearchList = listOf<LatestModel>()
         @SuppressLint("NotifyDataSetChanged")
@@ -35,10 +35,13 @@ class LatestSearchAdapter:
         Glide.with(holder.ivImageLatestItem)
             .load(item.image_url)
             .into(holder.ivImageLatestItem)
-
         holder.tvCategoryLatestItem.text = item.category
         holder.tvProductNameLatestItem.text = item.name
         holder.tvProductPriceLatestItem.text = "$ " + item.price.toString()
+
+        holder.ivImageLatestItem.setOnClickListener {
+            onItemClickListener?.onItemClick()
+        }
     }
 
     override fun getItemCount(): Int = latestSearchList.size
@@ -48,5 +51,9 @@ class LatestSearchAdapter:
         val tvCategoryLatestItem: TextView = view.findViewById(R.id.tv_category_latest_item)
         val tvProductNameLatestItem: TextView = view.findViewById(R.id.tv_product_name_latest_item)
         val tvProductPriceLatestItem: TextView = view.findViewById(R.id.tv_product_price_latest_item)
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick()
     }
 }

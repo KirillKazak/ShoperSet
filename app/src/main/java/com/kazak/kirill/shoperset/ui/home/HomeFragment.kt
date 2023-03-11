@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentHomeBinding
+import com.kazak.kirill.shoperset.util.Constants.BUNDLE_PRODUCT_KEY
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -53,6 +55,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             vb.recyclerLatestHome.adapter = latestAdapter
             latestAdapter.latestSearchList = it.latest
         }
+
+        latestAdapter.onItemClickListener = object : LatestSearchAdapter.OnItemClickListener {
+            override fun onItemClick() {
+                startProductFragment()
+            }
+        }
     }
 
     private fun startFlashSaleRecycler() {
@@ -61,6 +69,20 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             vb.recyclerFlashSaleHome.adapter = flashSaleAdapter
             flashSaleAdapter.flashSaleList = it.flash_sale
         }
+
+        flashSaleAdapter.onItemClickListener = object : FlashSaleAdapter.OnItemClickListener {
+            override fun onItemClick() {
+                startProductFragment()
+            }
+        }
     }
 
+    private fun startProductFragment() {
+        vm.getInformationAboutProduct()
+        vm.productInformationLD.observe(viewLifecycleOwner) {
+            val bundle = Bundle()
+            bundle.putParcelable(BUNDLE_PRODUCT_KEY, it)
+            findNavController().navigate(R.id.action_homeFragment_to_productFragment, bundle)
+        }
+    }
 }

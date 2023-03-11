@@ -4,8 +4,10 @@ import com.kazak.kirill.shoperset.data.credentials.UserCredentialsRepositoryImpl
 import com.kazak.kirill.shoperset.data.credentials.storage.UserCredentialsStorage
 import com.kazak.kirill.shoperset.data.credentials.storage.UserCredentialsStorageImpl
 import com.kazak.kirill.shoperset.data.latestSearch.LatestSearchRepositoryImpl
+import com.kazak.kirill.shoperset.data.product.ProductInformationRepositoryImpl
 import com.kazak.kirill.shoperset.domain.credentials.UserCredentialsRepository
 import com.kazak.kirill.shoperset.domain.latestSearch.ProductsRepository
+import com.kazak.kirill.shoperset.domain.product.ProductInformationRepository
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -25,5 +27,13 @@ val dataModule = module {
 
     single<ProductsRepository> {
         LatestSearchRepositoryImpl()
+    }
+
+
+
+
+
+    single<ProductInformationRepository> {
+        ProductInformationRepositoryImpl()
     }
 }

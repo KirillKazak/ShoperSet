@@ -28,6 +28,7 @@
     <dimen name="size_add_to_basket_latest">20dp</dimen>
     <dimen name="size_add_to_likes_latest">16dp</dimen>
     <dimen name="size_salesmen_photo">30dp</dimen>
+    <dimen name="size_icon_popularity">24dp</dimen>
 
     <dimen name="radius_edt_background">20dp</dimen>
     <dimen name="height_edt_background">36dp</dimen>
@@ -51,7 +52,24 @@
     <dimen name="width_item_latest">110dp</dimen>
     <dimen name="height_item_latest">140dp</dimen>
 
+    <dimen name="width_main_product_photo">300dp</dimen>
+    <dimen name="height_main_product_photo">280dp</dimen>
+
+    <dimen name="width_btn_quantity">50dp</dimen>
+    <dimen name="height_btn_quantity">30dp</dimen>
+
+    <dimen name="width_additional_photo_product">60dp</dimen>
+    <dimen name="height_additional_photo_product">40dp</dimen>
+
+    <dimen name="width_iv_color_product">40dp</dimen>
+    <dimen name="height_iv_color_product">30dp</dimen>
+
     <dimen name="elevation_top">8dp</dimen>
     <dimen name="radius_top_tab_layout">24dp</dimen>
     <dimen name="radius_item_latest">16dp</dimen>
+    <dimen name="height_share_line">1dp</dimen>
+    <dimen name="height_buy_settings_product">100dp</dimen>
+    <dimen name="height_btn_add_to_card_product">60dp</dimen>
+
+
 </resources>

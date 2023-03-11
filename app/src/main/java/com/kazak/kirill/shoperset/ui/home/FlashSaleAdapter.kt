@@ -13,6 +13,7 @@ import com.kazak.kirill.shoperset.domain.latestSearch.model.flashSale.FlashSale
 
 class FlashSaleAdapter:
     RecyclerView.Adapter<FlashSaleAdapter.FlashSaleViewHolder>() {
+    var onItemClickListener: OnItemClickListener? = null
 
     var flashSaleList = listOf<FlashSale>()
         @SuppressLint("NotifyDataSetChanged")
@@ -40,6 +41,10 @@ class FlashSaleAdapter:
         holder.tvCategoryFlashSaleItem.text = item.category
         holder.tvProductNameFlashSaleItem.text = item.name
         holder.tvProductPriceFlashSaleItem.text = "$ " + item.price.toString()
+
+        holder.ivImageFlashSaleItem.setOnClickListener {
+            onItemClickListener?.onItemClick()
+        }
     }
 
     override fun getItemCount(): Int = flashSaleList.size
@@ -50,5 +55,9 @@ class FlashSaleAdapter:
         val tvCategoryFlashSaleItem: TextView = view.findViewById(R.id.tv_category_flash_sale_item)
         val tvProductNameFlashSaleItem: TextView = view.findViewById(R.id.tv_product_name_flash_sale_item)
         val tvProductPriceFlashSaleItem: TextView = view.findViewById(R.id.tv_product_price_flash_sale_item)
+    }
+
+    interface OnItemClickListener{
+        fun onItemClick()
     }
 }
