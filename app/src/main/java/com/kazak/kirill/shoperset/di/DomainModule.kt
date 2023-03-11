@@ -3,6 +3,7 @@ package com.kazak.kirill.shoperset.di
 import com.kazak.kirill.shoperset.domain.credentials.useCase.*
 import com.kazak.kirill.shoperset.domain.latestSearch.useCase.GetFlashSaleProductsUseCase
 import com.kazak.kirill.shoperset.domain.latestSearch.useCase.GetLatestSearchProductUseCase
+import com.kazak.kirill.shoperset.domain.product.useCase.GetProductInformationUseCase
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -41,5 +42,12 @@ val domainModule = module {
 
     factory<GetFlashSaleProductsUseCase> {
         GetFlashSaleProductsUseCase(productsRepository = get())
+    }
+
+
+
+
+    factory<GetProductInformationUseCase> {
+        GetProductInformationUseCase(productInformationRepository = get())
     }
 }

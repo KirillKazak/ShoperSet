@@ -91,7 +91,7 @@
     <ImageView
         android:layout_width="@dimen/size_icon_share"
         android:layout_height="@dimen/size_icon_share"
-        android:background="@drawable/icon_share"
+        android:background="@drawable/icon_upload"
         android:elevation="@dimen/elevation_top"
         android:layout_marginStart="@dimen/margin_extra_large"
         app:layout_constraintTop_toTopOf="@id/btn_upload_item_profile"

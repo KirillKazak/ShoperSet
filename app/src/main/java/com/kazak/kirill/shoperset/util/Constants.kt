@@ -20,5 +20,8 @@ object Constants {
     const val BASE_API_URL = "https://run.mocky.io"
     const val LATEST_SEARCH_API_URL = "/v3/cc0071a1-f06e-48fa-9e90-b1c2a61eaca7"
     const val FLASH_SALE_API_URL = "/v3/a9ceeb6e-416d-4352-bde6-2203416576ac"
+    const val PRODUCT_INFORMATION_API_URL = "/v3/f7f99d04-4971-45d5-92e0-70333383c239"
+
+    const val BUNDLE_PRODUCT_KEY = "product_info"
 
 }

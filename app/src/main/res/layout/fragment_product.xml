@@ -78,7 +78,7 @@
                 android:id="@+id/iv_share_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/icon_share"
+                android:background="@drawable/icon_upload"
                 android:layout_marginTop="@dimen/margin_small"
                 tools:ignore="ContentDescription" />
         </LinearLayout>
