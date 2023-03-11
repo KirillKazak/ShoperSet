@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentProductBinding
 import com.kazak.kirill.shoperset.domain.AdditionalPhotosProductModel
+import com.kazak.kirill.shoperset.domain.product.ColorModel
 import com.kazak.kirill.shoperset.util.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -17,50 +18,53 @@ const val DEFAULT_TOTAL_PRICE_VALUE = 0
 class ProductFragment : Fragment(R.layout.fragment_product) {
     private val vb: FragmentProductBinding by viewBinding()
     private val vm by viewModel<ProductViewModel>()
+
     private val additionalPhotoProductAdapter by lazy { AdditionalPhotoProductAdapter() }
     private val colorProductAdapter by lazy { ColorProductAdapter() }
 
-
     private var quantity = DEFAULT_QUANTITY_VALUE
     private var totalPrice = DEFAULT_TOTAL_PRICE_VALUE
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
-            vm.informationAboutModel =
+            vm.informationAboutProductLD.value =
                 it.getParcelable(Constants.BUNDLE_PRODUCT_KEY)
         }
 
-        setData()
+        observeDataAboutProduct()
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setData() {
-        with(vb) {
+    private fun observeDataAboutProduct() {
+        vm.informationAboutProductLD.observe(viewLifecycleOwner) {
+            with(vb) {
 
-            Glide.with(this@ProductFragment)
-                .load(vm.informationAboutModel?.image_urls?.get(0))
-                .into(ivMainPhotoProduct)
+                Glide.with(this@ProductFragment)
+                    .load(it.image_urls?.get(0))
+                    .into(ivMainPhotoProduct)
 
-            tvNameProduct.text = vm.informationAboutModel?.name ?: ""
-            tvPriceProduct.text = "$ " + (vm.informationAboutModel?.price.toString())
-            tvDescriptionProduct.text = vm.informationAboutModel?.description ?: ""
-            tvPopularityMarkProduct.text = vm.informationAboutModel?.rating.toString()
-            tvReviewsProduct.text = "(${vm.informationAboutModel?.number_of_reviews} reviews)"
-            tvQuantityProduct.text = quantity.toString()
-            tvTotalPriceProduct.text = "$ $totalPrice"
+                tvNameProduct.text = it.name ?: ""
+                tvPriceProduct.text = "$ " + (it.price.toString())
+                tvDescriptionProduct.text = it.description ?: ""
+                tvPopularityMarkProduct.text = it.rating.toString()
+                tvReviewsProduct.text = "(${it.number_of_reviews} reviews)"
+                tvQuantityProduct.text = quantity.toString()
+                tvTotalPriceProduct.text = "$ $totalPrice"
 
-            startAdditionalPhotoProductAdapter()
-            startColorProductAdapter()
+                startAdditionalPhotoProductAdapter(it.image_urls)
+                startColorProductAdapter(it.colors)
+            }
         }
     }
 
-    private fun startAdditionalPhotoProductAdapter() {
-        vm.informationAboutModel?.image_urls?.let { list ->
+    private fun startAdditionalPhotoProductAdapter(images: ArrayList<String>?) {
+        images?.let { list ->
             val defaultAdditionalPhotoList = arrayListOf<AdditionalPhotosProductModel>()
             for (i in list) {
                 defaultAdditionalPhotoList.add(
                     AdditionalPhotosProductModel(
-                        list.indexOf(i) + 1 ,i, false
+                        list.indexOf(i) ,i, false
                     )
                 )
             }
@@ -83,10 +87,28 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             }
     }
 
-    private fun startColorProductAdapter() {
-        vm.informationAboutModel?.colors?.let {
-            colorProductAdapter.colorsProductList = it
+    private fun startColorProductAdapter(colors: ArrayList<String>?) {
+        colors?.let { colorList ->
+            val defaultColorList = arrayListOf<ColorModel>()
+            for (i in colorList) {
+                defaultColorList.add(
+                    ColorModel(
+                        colorList.indexOf(i), i, false
+                    )
+                )
+            }
+            defaultColorList[0].isSelected = true
+            colorProductAdapter.updateData(defaultColorList)
         }
         vb.recyclerColorProduct.adapter = colorProductAdapter
+
+        colorProductAdapter.onColorItemClickListener =
+            object : ColorProductAdapter.OnColorItemClickListener {
+
+                override fun onColorItemClick(color: String) {
+                    // TODO: (GET DATA ABOUT PRODUCT WITH SELECTED COLOR AND UPDATE THE SCREEN)
+                }
+
+            }
     }
 }
