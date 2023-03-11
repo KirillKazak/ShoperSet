@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentProductBinding
 import com.kazak.kirill.shoperset.domain.AdditionalPhotosProductModel
@@ -13,12 +13,14 @@ import com.kazak.kirill.shoperset.domain.ColorModel
 import com.kazak.kirill.shoperset.util.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+const val DEFAULT_POSITION_ACTIVE_PHOTO_ITEM = 0
 class ProductFragment : Fragment(R.layout.fragment_product) {
     private val vb: FragmentProductBinding by viewBinding()
     private val vm by viewModel<ProductViewModel>()
 
     private val additionalPhotoProductAdapter by lazy { AdditionalPhotoProductAdapter() }
     private val colorProductAdapter by lazy { ColorProductAdapter() }
+    private val mainPhotoProductAdapter by lazy { MainPhotoProductAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,10 +41,6 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         vm.informationAboutProductLD.observe(viewLifecycleOwner) {
             with(vb) {
 
-                Glide.with(this@ProductFragment)
-                    .load(it.image_urls?.get(0))
-                    .into(ivMainPhotoProduct)
-
                 tvNameProduct.text = it.name ?: ""
                 tvPriceProduct.text = "$ " + (it.price.toString())
                 tvDescriptionProduct.text = it.description ?: ""
@@ -52,6 +50,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                 vm.setProductPriceToVM(it.price)
 
                 startAdditionalPhotoProductAdapter(it.image_urls)
+                startMainPhotoViewPager(it.image_urls)
                 startColorProductAdapter(it.colors)
             }
         }
@@ -68,19 +67,30 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     }
 
     private fun startAdditionalPhotoProductAdapter(images: ArrayList<String>?) {
-        setDefaultPhotosListToPhotoAdapter(images)
+        setPhotosListToPhotoAdapter(images, DEFAULT_POSITION_ACTIVE_PHOTO_ITEM)
 
         vb.recyclerAdditionalPhotoProduct.adapter = additionalPhotoProductAdapter
 
         additionalPhotoProductAdapter.onPhotoItemClickListener =
             object : AdditionalPhotoProductAdapter.OnPhotoItemClickListener {
-                override fun onPhotoItemClick(imgUrl: String) {
-                    Glide.with(this@ProductFragment)
-                        .load(imgUrl)
-                        .into(vb.ivMainPhotoProduct)
-                }
 
+                override fun onPhotoItemClick(id: Int) {
+                    vb.vp2MainPhotoProduct.currentItem = id
+                }
             }
+    }
+
+    private fun startMainPhotoViewPager(images: ArrayList<String>?) {
+        setDefaultPhotosListToMainPhotoAdapter(images)
+        vb.vp2MainPhotoProduct.adapter = mainPhotoProductAdapter
+
+        vb.vp2MainPhotoProduct.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                setPhotosListToPhotoAdapter(images, position)
+            }
+        })
     }
 
     private fun startColorProductAdapter(colors: ArrayList<String>?) {
@@ -96,7 +106,24 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             }
     }
 
-    private fun setDefaultPhotosListToPhotoAdapter(images: ArrayList<String>?) {
+    private fun setPhotosListToPhotoAdapter(images: ArrayList<String>?, position: Int) {
+        images?.let { list ->
+            val defaultAdditionalPhotoList = arrayListOf<AdditionalPhotosProductModel>()
+
+            for (i in list) {
+                defaultAdditionalPhotoList.add(
+                    AdditionalPhotosProductModel(
+                        list.indexOf(i) ,i, false
+                    )
+                )
+            }
+
+            defaultAdditionalPhotoList[position].isSelected = true
+            additionalPhotoProductAdapter.updateData(defaultAdditionalPhotoList)
+        }
+    }
+
+    private fun setDefaultPhotosListToMainPhotoAdapter(images: ArrayList<String>?) {
         images?.let { list ->
             val defaultAdditionalPhotoList = arrayListOf<AdditionalPhotosProductModel>()
 
@@ -109,7 +136,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
             }
 
             defaultAdditionalPhotoList[0].isSelected = true
-            additionalPhotoProductAdapter.updateData(defaultAdditionalPhotoList)
+            mainPhotoProductAdapter.updateData(defaultAdditionalPhotoList)
         }
     }
 

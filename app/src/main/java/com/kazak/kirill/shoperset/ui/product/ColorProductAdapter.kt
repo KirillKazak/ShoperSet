@@ -27,9 +27,7 @@ class ColorProductAdapter:
             colorsProductList.addAll(data)
             notifyDataSetChanged()
         }
-
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ColorProductViewHolder {
         val view = LayoutInflater.from(parent.context)

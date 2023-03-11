@@ -32,23 +32,15 @@
         tools:ignore="ContentDescription"
         android:elevation="@dimen/elevation_top"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view_product"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2_main_photo_product"
             android:layout_width="@dimen/width_main_product_photo"
             android:layout_height="@dimen/height_main_product_photo"
-            app:cardCornerRadius="@dimen/radius_item_latest"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_arrow_back_product">
-            <ImageView
-                android:id="@+id/iv_main_photo_product"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="ContentDescription"
-                android:elevation="@dimen/elevation_top"/>
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toBottomOf="@id/iv_arrow_back_product"
+            tools:listitem="@layout/item_main_photo_product"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -57,10 +49,10 @@
             android:background="@drawable/background_share_frame"
             android:elevation="@dimen/elevation_top"
             android:gravity="center"
-            app:layout_constraintStart_toEndOf="@id/card_view_product"
-            app:layout_constraintEnd_toEndOf="@id/card_view_product"
-            app:layout_constraintTop_toTopOf="@id/card_view_product"
-            app:layout_constraintBottom_toBottomOf="@id/card_view_product">
+            app:layout_constraintStart_toEndOf="@id/vp2_main_photo_product"
+            app:layout_constraintEnd_toEndOf="@id/vp2_main_photo_product"
+            app:layout_constraintTop_toTopOf="@id/vp2_main_photo_product"
+            app:layout_constraintBottom_toBottomOf="@id/vp2_main_photo_product">
             <ImageView
                 android:id="@+id/iv_like_product"
                 android:layout_width="wrap_content"
@@ -91,7 +83,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_view_product"
+        app:layout_constraintTop_toBottomOf="@id/vp2_main_photo_product"
         tools:listitem="@layout/item_additional_photo_product"/>
 
     <TextView

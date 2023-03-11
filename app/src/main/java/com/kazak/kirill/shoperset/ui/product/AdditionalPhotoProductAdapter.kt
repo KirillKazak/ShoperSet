@@ -30,7 +30,6 @@ class AdditionalPhotoProductAdapter:
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdditionalPhotoViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_additional_photo_product, parent, false)
@@ -52,14 +51,13 @@ class AdditionalPhotoProductAdapter:
         }
 
         holder.ivAdditionalPhotoProduct.setOnClickListener {
-            val photos = additionalPhotoList
-            photos.forEach {
+            additionalPhotoList.forEach {
                 it.isSelected = false
             }
-            photos.find { it.id == photos[position].id }?.isSelected = true
+            additionalPhotoList.find { it.id == additionalPhotoList[position].id }?.isSelected = true
             notifyDataSetChanged()
 
-            onPhotoItemClickListener?.onPhotoItemClick(item.imgUrl)
+            onPhotoItemClickListener?.onPhotoItemClick(item.id)
         }
     }
 
@@ -77,6 +75,6 @@ class AdditionalPhotoProductAdapter:
     }
 
     interface OnPhotoItemClickListener {
-        fun onPhotoItemClick(imgUrl: String)
+        fun onPhotoItemClick(id: Int)
     }
 }
