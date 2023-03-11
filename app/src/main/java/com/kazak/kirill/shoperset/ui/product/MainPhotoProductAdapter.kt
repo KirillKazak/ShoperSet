@@ -28,13 +28,13 @@ class MainPhotoProductAdapter: RecyclerView.Adapter<MainPhotoProductAdapter.Main
             .inflate(R.layout.item_main_photo_product, parent, false)
         return MainPhotoProductViewHolder(view)
     }
-    
+
     override fun onBindViewHolder(holder: MainPhotoProductViewHolder, position: Int) {
         val item = mainPhotoList[position]
 
-            Glide.with(holder.ivMainPhotoProduct)
-                .load(item.imgUrl)
-                .into(holder.ivMainPhotoProduct)
+        Glide.with(holder.ivMainPhotoProduct)
+            .load(item.imgUrl)
+            .into(holder.ivMainPhotoProduct)
     }
 
     override fun getItemCount(): Int = mainPhotoList.size
