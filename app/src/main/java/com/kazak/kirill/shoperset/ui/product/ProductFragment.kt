@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentProductBinding
+import com.kazak.kirill.shoperset.domain.AdditionalPhotosProductModel
 import com.kazak.kirill.shoperset.util.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -54,10 +55,32 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     }
 
     private fun startAdditionalPhotoProductAdapter() {
-        vm.informationAboutModel?.image_urls?.let {
-            additionalPhotoProductAdapter.additionalPhotoList = it
+        vm.informationAboutModel?.image_urls?.let { list ->
+            val defaultAdditionalPhotoList = arrayListOf<AdditionalPhotosProductModel>()
+            for (i in list) {
+                defaultAdditionalPhotoList.add(
+                    AdditionalPhotosProductModel(
+                        list.indexOf(i) + 1 ,i, false
+                    )
+                )
+            }
+            defaultAdditionalPhotoList[0].isSelected = true
+
+            additionalPhotoProductAdapter.updateData(defaultAdditionalPhotoList)
+
         }
+
         vb.recyclerAdditionalPhotoProduct.adapter = additionalPhotoProductAdapter
+
+        additionalPhotoProductAdapter.onPhotoItemClickListener =
+            object : AdditionalPhotoProductAdapter.OnPhotoItemClickListener {
+                override fun onPhotoItemClick(imgUrl: String) {
+                    Glide.with(this@ProductFragment)
+                        .load(imgUrl)
+                        .into(vb.ivMainPhotoProduct)
+                }
+
+            }
     }
 
     private fun startColorProductAdapter() {

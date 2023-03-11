@@ -5,19 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
+import com.kazak.kirill.shoperset.domain.AdditionalPhotosProductModel
+import com.kazak.kirill.shoperset.util.decreaseItem
+import com.kazak.kirill.shoperset.util.increaseItem
+
 
 class AdditionalPhotoProductAdapter:
     RecyclerView.Adapter<AdditionalPhotoProductAdapter.AdditionalPhotoViewHolder>() {
 
-    var additionalPhotoList = arrayListOf<String>()
-        @SuppressLint("NotifyDataSetChanged")
-        set(value) {
-            field = value
+    var onPhotoItemClickListener: OnPhotoItemClickListener? = null
+
+    var additionalPhotoList = mutableListOf<AdditionalPhotosProductModel>()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(data: List<AdditionalPhotosProductModel>) {
+        if (additionalPhotoList != data) {
+            additionalPhotoList.clear()
+            additionalPhotoList.addAll(data)
             notifyDataSetChanged()
         }
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdditionalPhotoViewHolder {
@@ -26,12 +37,30 @@ class AdditionalPhotoProductAdapter:
         return AdditionalPhotoViewHolder(view)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: AdditionalPhotoViewHolder, position: Int) {
         val item= additionalPhotoList[position]
 
         Glide.with(holder.ivAdditionalPhotoProduct)
-            .load(item)
+            .load(item.imgUrl)
             .into(holder.ivAdditionalPhotoProduct)
+
+        if (item.isSelected) {
+            increaseItem(holder.additionalPhotoItem)
+        } else {
+            decreaseItem(holder.additionalPhotoItem)
+        }
+
+        holder.ivAdditionalPhotoProduct.setOnClickListener {
+            val photos = additionalPhotoList
+            photos.forEach {
+                it.isSelected = false
+            }
+            photos.find { it.id == photos[position].id }?.isSelected = true
+            notifyDataSetChanged()
+
+            onPhotoItemClickListener?.onPhotoItemClick(item.imgUrl)
+        }
     }
 
     override fun getItemCount(): Int = additionalPhotoList.size
@@ -43,7 +72,11 @@ class AdditionalPhotoProductAdapter:
     class AdditionalPhotoViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
 
-        val ivAdditionalPhotoProduct: ImageView =
-            view.findViewById(R.id.iv_additional_photo_product)
+        val ivAdditionalPhotoProduct: ImageView = view.findViewById(R.id.iv_additional_photo_product)
+        val additionalPhotoItem: CardView = view.findViewById(R.id.additional_photo_item)
+    }
+
+    interface OnPhotoItemClickListener {
+        fun onPhotoItemClick(imgUrl: String)
     }
 }
