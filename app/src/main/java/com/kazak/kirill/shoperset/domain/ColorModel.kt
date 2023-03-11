@@ -1,4 +1,4 @@
-package com.kazak.kirill.shoperset.domain.product
+package com.kazak.kirill.shoperset.domain
 
 data class ColorModel (
     val id: Int,

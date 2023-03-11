@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.graphics.toColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.kazak.kirill.shoperset.R
-import com.kazak.kirill.shoperset.domain.product.ColorModel
+import com.kazak.kirill.shoperset.domain.ColorModel
 import com.kazak.kirill.shoperset.util.decreaseItem
 import com.kazak.kirill.shoperset.util.increaseItem
 

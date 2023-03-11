@@ -9,21 +9,16 @@ import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentProductBinding
 import com.kazak.kirill.shoperset.domain.AdditionalPhotosProductModel
-import com.kazak.kirill.shoperset.domain.product.ColorModel
+import com.kazak.kirill.shoperset.domain.ColorModel
 import com.kazak.kirill.shoperset.util.Constants
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val DEFAULT_QUANTITY_VALUE = 0
-const val DEFAULT_TOTAL_PRICE_VALUE = 0
 class ProductFragment : Fragment(R.layout.fragment_product) {
     private val vb: FragmentProductBinding by viewBinding()
     private val vm by viewModel<ProductViewModel>()
 
     private val additionalPhotoProductAdapter by lazy { AdditionalPhotoProductAdapter() }
     private val colorProductAdapter by lazy { ColorProductAdapter() }
-
-    private var quantity = DEFAULT_QUANTITY_VALUE
-    private var totalPrice = DEFAULT_TOTAL_PRICE_VALUE
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,6 +28,10 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
         }
 
         observeDataAboutProduct()
+        observePurchaseQuantityLD()
+
+        btnMinusQuantity()
+        btnPlusQuantity()
     }
 
     @SuppressLint("SetTextI18n")
@@ -49,11 +48,21 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                 tvDescriptionProduct.text = it.description ?: ""
                 tvPopularityMarkProduct.text = it.rating.toString()
                 tvReviewsProduct.text = "(${it.number_of_reviews} reviews)"
-                tvQuantityProduct.text = quantity.toString()
-                tvTotalPriceProduct.text = "$ $totalPrice"
+
+                vm.setProductPriceToVM(it.price)
 
                 startAdditionalPhotoProductAdapter(it.image_urls)
                 startColorProductAdapter(it.colors)
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun observePurchaseQuantityLD() {
+        vm.purchaseQuantityLD.observe(viewLifecycleOwner) {
+            with(vb) {
+                tvQuantityProduct.text = it.quantity.toString()
+                tvTotalPriceProduct.text = "$ ${it.price}"
             }
         }
     }
@@ -118,6 +127,18 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
             defaultColorList[0].isSelected = true
             colorProductAdapter.updateData(defaultColorList)
+        }
+    }
+
+    private fun btnMinusQuantity() {
+        vb.btnMinusQuantityProduct.setOnClickListener {
+            vm.decreaseQuantity()
+        }
+    }
+
+    private fun btnPlusQuantity() {
+        vb.btnPlusQuantityProduct.setOnClickListener {
+            vm.increaseQuantity()
         }
     }
 }
