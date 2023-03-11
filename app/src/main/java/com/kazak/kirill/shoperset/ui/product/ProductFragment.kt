@@ -59,20 +59,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     }
 
     private fun startAdditionalPhotoProductAdapter(images: ArrayList<String>?) {
-        images?.let { list ->
-            val defaultAdditionalPhotoList = arrayListOf<AdditionalPhotosProductModel>()
-            for (i in list) {
-                defaultAdditionalPhotoList.add(
-                    AdditionalPhotosProductModel(
-                        list.indexOf(i) ,i, false
-                    )
-                )
-            }
-            defaultAdditionalPhotoList[0].isSelected = true
-
-            additionalPhotoProductAdapter.updateData(defaultAdditionalPhotoList)
-
-        }
+        setDefaultPhotosListToPhotoAdapter(images)
 
         vb.recyclerAdditionalPhotoProduct.adapter = additionalPhotoProductAdapter
 
@@ -88,8 +75,39 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     }
 
     private fun startColorProductAdapter(colors: ArrayList<String>?) {
+        setDefaultColorsListToColorsAdapter(colors)
+
+        vb.recyclerColorProduct.adapter = colorProductAdapter
+
+        colorProductAdapter.onColorItemClickListener =
+            object : ColorProductAdapter.OnColorItemClickListener {
+                override fun onColorItemClick(color: String) {
+                    // TODO: (GET DATA ABOUT PRODUCT WITH SELECTED COLOR AND UPDATE THE SCREEN)
+                }
+            }
+    }
+
+    private fun setDefaultPhotosListToPhotoAdapter(images: ArrayList<String>?) {
+        images?.let { list ->
+            val defaultAdditionalPhotoList = arrayListOf<AdditionalPhotosProductModel>()
+
+            for (i in list) {
+                defaultAdditionalPhotoList.add(
+                    AdditionalPhotosProductModel(
+                        list.indexOf(i) ,i, false
+                    )
+                )
+            }
+
+            defaultAdditionalPhotoList[0].isSelected = true
+            additionalPhotoProductAdapter.updateData(defaultAdditionalPhotoList)
+        }
+    }
+
+    private fun setDefaultColorsListToColorsAdapter(colors: ArrayList<String>?) {
         colors?.let { colorList ->
             val defaultColorList = arrayListOf<ColorModel>()
+
             for (i in colorList) {
                 defaultColorList.add(
                     ColorModel(
@@ -97,18 +115,9 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
                     )
                 )
             }
+
             defaultColorList[0].isSelected = true
             colorProductAdapter.updateData(defaultColorList)
         }
-        vb.recyclerColorProduct.adapter = colorProductAdapter
-
-        colorProductAdapter.onColorItemClickListener =
-            object : ColorProductAdapter.OnColorItemClickListener {
-
-                override fun onColorItemClick(color: String) {
-                    // TODO: (GET DATA ABOUT PRODUCT WITH SELECTED COLOR AND UPDATE THE SCREEN)
-                }
-
-            }
     }
 }
