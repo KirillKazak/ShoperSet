@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
-import com.kazak.kirill.shoperset.domain.latestSearch.model.flashSale.FlashSale
+import com.kazak.kirill.shoperset.domain.products.model.flashSale.FlashSale
 
 class FlashSaleAdapter:
     RecyclerView.Adapter<FlashSaleAdapter.FlashSaleViewHolder>() {

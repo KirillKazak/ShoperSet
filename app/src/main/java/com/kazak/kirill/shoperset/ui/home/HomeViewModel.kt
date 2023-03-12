@@ -3,12 +3,12 @@ package com.kazak.kirill.shoperset.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserPhotoUseCase
-import com.kazak.kirill.shoperset.domain.latestSearch.model.flashSale.FlashSaleModel
-import com.kazak.kirill.shoperset.domain.latestSearch.model.latestSearch.LatestSearchModel
-import com.kazak.kirill.shoperset.domain.latestSearch.useCase.GetFlashSaleProductsUseCase
-import com.kazak.kirill.shoperset.domain.latestSearch.useCase.GetLatestSearchProductUseCase
-import com.kazak.kirill.shoperset.domain.product.model.ProductModel
-import com.kazak.kirill.shoperset.domain.product.useCase.GetProductInformationUseCase
+import com.kazak.kirill.shoperset.domain.products.model.flashSale.FlashSale
+import com.kazak.kirill.shoperset.domain.products.model.latestSearch.LatestModel
+import com.kazak.kirill.shoperset.domain.products.useCase.GetFlashSaleProductsUseCase
+import com.kazak.kirill.shoperset.domain.products.useCase.GetLatestSearchProductUseCase
+import com.kazak.kirill.shoperset.domain.products.model.product.ProductModel
+import com.kazak.kirill.shoperset.domain.products.useCase.GetProductInformationUseCase
 import com.kazak.kirill.shoperset.domain.searchingHint.model.SearchingHintModel
 import com.kazak.kirill.shoperset.domain.searchingHint.useCase.GetSearchingHintsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -25,34 +25,37 @@ class HomeViewModel(
 
     private val compositeDisposable = CompositeDisposable()
 
-    val latestSearchProductsLD = MutableLiveData<LatestSearchModel>()
-    val flashSaleProductsLD = MutableLiveData<FlashSaleModel>()
+    val latestSearchProductsLD = MutableLiveData<List<LatestModel>>()
+    val flashSaleProductsLD = MutableLiveData<List<FlashSale>>()
     val productInformationLD = MutableLiveData<ProductModel>()
     var hintsLD = MutableLiveData<SearchingHintModel>()
+
+    val categoriesNameList = listOf("Phones", "Headphones", "Games", "Cars", "Furniture", "Kids")
 
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
     }
 
-    fun getLatestSearchProducts() {
+    fun getLatestSearchProducts(activeCategories: List<String>) {
         compositeDisposable.add(
             getLatestSearchProductUseCase.getLatestSearchProduct()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    latestSearchProductsLD.postValue(it)
+                .subscribe({allList ->
+                    latestSearchProductsLD.postValue(allList.latest.filter { activeCategories.contains(it.category) })
                 }, { })
         )
     }
 
-    fun getSplashSaleProducts() {
+    fun getSplashSaleProducts(activeCategories: List<String>) {
         compositeDisposable.add(
             getFlashSaleProductsUseCase.getFlashSaleProducts()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    flashSaleProductsLD.postValue(it)
+                .subscribe({ allList ->
+                    val toSend = allList.flash_sale.filter { activeCategories.contains(it.category) }
+                    flashSaleProductsLD.postValue(toSend)
                 }, { })
         )
     }

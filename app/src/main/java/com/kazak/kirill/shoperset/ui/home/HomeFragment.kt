@@ -1,6 +1,5 @@
 package com.kazak.kirill.shoperset.ui.home
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -17,48 +16,38 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val vb: FragmentHomeBinding by viewBinding()
     private val vm by viewModel<HomeViewModel>()
-    private val categoryAdapter by lazy { CategoryAdapter() }
+    private val categoryAdapter by lazy { CategoryAdapter(requireContext()) }
     private val latestAdapter by lazy { LatestSearchAdapter() }
     private val flashSaleAdapter by lazy { FlashSaleAdapter() }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startCategory()
+        vm.getLatestSearchProducts(vm.categoriesNameList)
+        vm.getSplashSaleProducts(vm.categoriesNameList)
         startLatestSearchRecycler()
         startFlashSaleRecycler()
+        startCategory()
         onSearchingProducts()
         setUserPhotoToView()
     }
 
     private fun startCategory() {
-        val defaultListCategory = arrayListOf(
-            CategoryAdapter.Category(R.drawable.icon_phone, requireContext().getString(R.string.phones), false),
-            CategoryAdapter.Category(R.drawable.icon_headphones, requireContext().getString(R.string.headphones), false),
-            CategoryAdapter.Category(R.drawable.icon_games, requireContext().getString(R.string.games), false),
-            CategoryAdapter.Category(R.drawable.icon_cars, requireContext().getString(R.string.cars), false),
-            CategoryAdapter.Category(R.drawable.icon_furniture, requireContext().getString(R.string.furniture), false),
-            CategoryAdapter.Category(R.drawable.icon_kids, requireContext().getString(R.string.kids), false)
-        )
 
         vb.recyclerCategoryHome.adapter = categoryAdapter
-        categoryAdapter.categoryList = defaultListCategory
 
         categoryAdapter.onCategoryItemClickListener = object : CategoryAdapter.OnCategoryItemClickListener {
-            @SuppressLint("NotifyDataSetChanged")
-            override fun onCategoryItemClick(position: Int) {
-                val newListCategory = defaultListCategory
-                newListCategory[position].isClick = true
-                categoryAdapter.categoryList = newListCategory
+            override fun onCategoryItemClick(activeCategories: List<String>) {
+                vm.getLatestSearchProducts(activeCategories)
+                vm.getSplashSaleProducts(activeCategories)
             }
         }
     }
 
     private fun startLatestSearchRecycler() {
-        vm.getLatestSearchProducts()
         vm.latestSearchProductsLD.observe(viewLifecycleOwner) {
             vb.recyclerLatestHome.adapter = latestAdapter
-            latestAdapter.latestSearchList = it.latest
+            latestAdapter.latestSearchList = it
         }
 
         latestAdapter.onItemClickListener = object : LatestSearchAdapter.OnItemClickListener {
@@ -69,10 +58,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun startFlashSaleRecycler() {
-        vm.getSplashSaleProducts()
         vm.flashSaleProductsLD.observe(viewLifecycleOwner) {
             vb.recyclerFlashSaleHome.adapter = flashSaleAdapter
-            flashSaleAdapter.flashSaleList = it.flash_sale
+            flashSaleAdapter.flashSaleList = it
         }
 
         flashSaleAdapter.onItemClickListener = object : FlashSaleAdapter.OnItemClickListener {

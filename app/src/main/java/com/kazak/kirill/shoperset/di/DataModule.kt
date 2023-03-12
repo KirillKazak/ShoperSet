@@ -7,7 +7,7 @@ import com.kazak.kirill.shoperset.data.latestSearch.LatestSearchRepositoryImpl
 import com.kazak.kirill.shoperset.data.product.ProductInformationRepositoryImpl
 import com.kazak.kirill.shoperset.data.searchingHint.SearchingHintRepositoryImpl
 import com.kazak.kirill.shoperset.domain.credentials.UserCredentialsRepository
-import com.kazak.kirill.shoperset.domain.latestSearch.ProductsRepository
+import com.kazak.kirill.shoperset.domain.products.ProductsRepository
 import com.kazak.kirill.shoperset.domain.product.ProductInformationRepository
 import com.kazak.kirill.shoperset.domain.searchingHint.SearchingHintRepository
 import org.koin.dsl.module

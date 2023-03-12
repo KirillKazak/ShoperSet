@@ -1,7 +1,7 @@
 package com.kazak.kirill.shoperset.data.latestSearch
 
 import com.kazak.kirill.shoperset.data.api.ConfigApi
-import com.kazak.kirill.shoperset.domain.latestSearch.ProductsRepository
+import com.kazak.kirill.shoperset.domain.products.ProductsRepository
 
 class LatestSearchRepositoryImpl: ProductsRepository {
 

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.kazak.kirill.shoperset.R
-import com.kazak.kirill.shoperset.domain.latestSearch.model.latestSearch.LatestModel
+import com.kazak.kirill.shoperset.domain.products.model.latestSearch.LatestModel
 
 class LatestSearchAdapter: RecyclerView.Adapter<LatestSearchAdapter.LatestSearchViewHolder>() {
     var onItemClickListener: OnItemClickListener? = null

@@ -1,6 +1,6 @@
-package com.kazak.kirill.shoperset.domain.latestSearch.useCase
+package com.kazak.kirill.shoperset.domain.products.useCase
 
-import com.kazak.kirill.shoperset.domain.latestSearch.ProductsRepository
+import com.kazak.kirill.shoperset.domain.products.ProductsRepository
 
 class GetLatestSearchProductUseCase(private val productsRepository: ProductsRepository) {
 

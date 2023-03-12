@@ -1,4 +1,4 @@
-package com.kazak.kirill.shoperset.domain.product.useCase
+package com.kazak.kirill.shoperset.domain.products.useCase
 
 import com.kazak.kirill.shoperset.domain.product.ProductInformationRepository
 

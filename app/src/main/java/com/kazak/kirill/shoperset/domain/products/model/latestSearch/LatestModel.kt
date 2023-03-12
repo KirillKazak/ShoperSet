@@ -1,4 +1,4 @@
-package com.kazak.kirill.shoperset.domain.latestSearch.model.latestSearch
+package com.kazak.kirill.shoperset.domain.products.model.latestSearch
 
 data class LatestModel(
     val category: String,

@@ -3,7 +3,7 @@ package com.kazak.kirill.shoperset.ui.product
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kazak.kirill.shoperset.domain.PurchaseQuantityModel
-import com.kazak.kirill.shoperset.domain.product.model.ProductModel
+import com.kazak.kirill.shoperset.domain.products.model.product.ProductModel
 
 const val DEFAULT_QUANTITY_VALUE = 0
 const val DEFAULT_PRICE_VALUE = 0

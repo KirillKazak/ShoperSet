@@ -1,8 +1,8 @@
 package com.kazak.kirill.shoperset.data.api
 
-import com.kazak.kirill.shoperset.domain.latestSearch.model.flashSale.FlashSaleModel
-import com.kazak.kirill.shoperset.domain.latestSearch.model.latestSearch.LatestSearchModel
-import com.kazak.kirill.shoperset.domain.product.model.ProductModel
+import com.kazak.kirill.shoperset.domain.products.model.flashSale.FlashSaleModel
+import com.kazak.kirill.shoperset.domain.products.model.latestSearch.LatestSearchModel
+import com.kazak.kirill.shoperset.domain.products.model.product.ProductModel
 import com.kazak.kirill.shoperset.domain.searchingHint.model.SearchingHintModel
 import com.kazak.kirill.shoperset.util.Constants.FLASH_SALE_API_URL
 import com.kazak.kirill.shoperset.util.Constants.LATEST_SEARCH_API_URL
