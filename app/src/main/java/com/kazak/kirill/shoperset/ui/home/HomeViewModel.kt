@@ -2,6 +2,7 @@ package com.kazak.kirill.shoperset.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserPhotoUseCase
 import com.kazak.kirill.shoperset.domain.latestSearch.model.flashSale.FlashSaleModel
 import com.kazak.kirill.shoperset.domain.latestSearch.model.latestSearch.LatestSearchModel
 import com.kazak.kirill.shoperset.domain.latestSearch.useCase.GetFlashSaleProductsUseCase
@@ -18,7 +19,8 @@ class HomeViewModel(
     private val getLatestSearchProductUseCase: GetLatestSearchProductUseCase,
     private val getFlashSaleProductsUseCase: GetFlashSaleProductsUseCase,
     private val getProductInformationUseCase: GetProductInformationUseCase,
-    private val getSearchingHintsUseCase: GetSearchingHintsUseCase
+    private val getSearchingHintsUseCase: GetSearchingHintsUseCase,
+    private val getUserPhotoUseCase: GetUserPhotoUseCase
 ): ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -76,4 +78,6 @@ class HomeViewModel(
                 }, { })
         )
     }
+
+    fun getUserPhoto() = getUserPhotoUseCase.getUserPhoto()
 }

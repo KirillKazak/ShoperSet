@@ -7,6 +7,8 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentHomeBinding
 import com.kazak.kirill.shoperset.util.Constants.BUNDLE_PRODUCT_KEY
@@ -26,6 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         startLatestSearchRecycler()
         startFlashSaleRecycler()
         onSearchingProducts()
+        setUserPhotoToView()
     }
 
     private fun startCategory() {
@@ -95,5 +98,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, it.words)
             vb.edtLookingForHome.setAdapter(arrayAdapter)
         }
+    }
+
+    private fun setUserPhotoToView() {
+        Glide.with(this@HomeFragment)
+            .load(vm.getUserPhoto())
+            .centerCrop()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .placeholder(R.drawable.icon_user_placeholder)
+            .into(vb.ivUserPhotoHome)
     }
 }

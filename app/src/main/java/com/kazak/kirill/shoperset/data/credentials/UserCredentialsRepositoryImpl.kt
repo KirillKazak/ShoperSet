@@ -100,6 +100,9 @@ class UserCredentialsRepositoryImpl(
         }
     }
 
+    override fun getUserPhoto() =
+        getUserCredentialsById(currentUserId).userPhoto
+
     private fun String.isEmailValid(): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }

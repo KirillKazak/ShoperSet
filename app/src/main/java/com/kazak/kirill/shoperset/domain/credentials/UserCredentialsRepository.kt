@@ -19,4 +19,6 @@ interface UserCredentialsRepository {
         password: String,
         errorMessage: (String) -> Unit
     )
+
+    fun getUserPhoto(): String
 }

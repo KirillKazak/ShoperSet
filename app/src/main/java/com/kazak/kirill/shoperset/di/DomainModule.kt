@@ -33,6 +33,9 @@ val domainModule = module {
     factory<CheckUserCredentialsOnLogInUseCase> {
         CheckUserCredentialsOnLogInUseCase(userCredentialsRepository = get())
     }
+    factory<GetUserPhotoUseCase> {
+        GetUserPhotoUseCase(userCredentialsRepository = get())
+    }
 
 
 
