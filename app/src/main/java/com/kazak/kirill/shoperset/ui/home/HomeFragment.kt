@@ -3,6 +3,7 @@ package com.kazak.kirill.shoperset.ui.home
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -24,6 +25,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         startCategory()
         startLatestSearchRecycler()
         startFlashSaleRecycler()
+        onSearchingProducts()
     }
 
     private fun startCategory() {
@@ -83,6 +85,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             val bundle = Bundle()
             bundle.putParcelable(BUNDLE_PRODUCT_KEY, it)
             findNavController().navigate(R.id.action_homeFragment_to_productFragment, bundle)
+        }
+    }
+
+    private fun onSearchingProducts() {
+        vm.getSearchingHints()
+
+        vm.hintsLD.observe(viewLifecycleOwner) {
+            val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, it.words)
+            vb.edtLookingForHome.setAdapter(arrayAdapter)
         }
     }
 }
