@@ -8,6 +8,8 @@ import com.kazak.kirill.shoperset.domain.latestSearch.useCase.GetFlashSaleProduc
 import com.kazak.kirill.shoperset.domain.latestSearch.useCase.GetLatestSearchProductUseCase
 import com.kazak.kirill.shoperset.domain.product.model.ProductModel
 import com.kazak.kirill.shoperset.domain.product.useCase.GetProductInformationUseCase
+import com.kazak.kirill.shoperset.domain.searchingHint.model.SearchingHintModel
+import com.kazak.kirill.shoperset.domain.searchingHint.useCase.GetSearchingHintsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -15,7 +17,8 @@ import io.reactivex.schedulers.Schedulers
 class HomeViewModel(
     private val getLatestSearchProductUseCase: GetLatestSearchProductUseCase,
     private val getFlashSaleProductsUseCase: GetFlashSaleProductsUseCase,
-    private val getProductInformationUseCase: GetProductInformationUseCase
+    private val getProductInformationUseCase: GetProductInformationUseCase,
+    private val getSearchingHintsUseCase: GetSearchingHintsUseCase
 ): ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -23,6 +26,7 @@ class HomeViewModel(
     val latestSearchProductsLD = MutableLiveData<LatestSearchModel>()
     val flashSaleProductsLD = MutableLiveData<FlashSaleModel>()
     val productInformationLD = MutableLiveData<ProductModel>()
+    var hintsLD = MutableLiveData<SearchingHintModel>()
 
     override fun onCleared() {
         super.onCleared()
@@ -58,6 +62,17 @@ class HomeViewModel(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     productInformationLD.postValue(it)
+                }, { })
+        )
+    }
+
+    fun getSearchingHints() {
+        compositeDisposable.add(
+            getSearchingHintsUseCase.getSearchingHints()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    hintsLD.value = it
                 }, { })
         )
     }

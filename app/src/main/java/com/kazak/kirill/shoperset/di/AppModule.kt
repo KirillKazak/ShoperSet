@@ -34,7 +34,8 @@ val appModule = module {
         HomeViewModel(
             getLatestSearchProductUseCase = get(),
             getFlashSaleProductsUseCase = get(),
-            getProductInformationUseCase = get()
+            getProductInformationUseCase = get(),
+            getSearchingHintsUseCase = get()
         )
     }
 
