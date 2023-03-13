@@ -3,11 +3,11 @@ package com.kazak.kirill.shoperset.ui.product
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kazak.kirill.shoperset.domain.PurchaseQuantityModel
-import com.kazak.kirill.shoperset.domain.products.model.product.ProductModel
+import com.kazak.kirill.shoperset.domain.productInformation.model.product.ProductModel
 
 const val DEFAULT_QUANTITY_VALUE = 0
 const val DEFAULT_PRICE_VALUE = 0
-class ProductViewModel(): ViewModel() {
+class ProductViewModel: ViewModel() {
 
     val informationAboutProductLD = MutableLiveData<ProductModel>()
     val purchaseQuantityLD = MutableLiveData<PurchaseQuantityModel>()

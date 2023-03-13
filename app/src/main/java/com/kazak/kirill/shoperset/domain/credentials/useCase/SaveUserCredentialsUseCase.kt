@@ -7,7 +7,7 @@ class SaveUserCredentialsUseCase(
     private val userCredentialsRepository: UserCredentialsRepository
 ) {
 
-    fun saveUserCredentials(userCredentials: UserCredentialsModel) {
+    suspend fun saveUserCredentials(userCredentials: UserCredentialsModel) {
         userCredentialsRepository.saveUserCredentials(userCredentials)
     }
 }

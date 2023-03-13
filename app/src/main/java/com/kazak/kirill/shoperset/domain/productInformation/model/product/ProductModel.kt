@@ -1,4 +1,4 @@
-package com.kazak.kirill.shoperset.domain.products.model.product
+package com.kazak.kirill.shoperset.domain.productInformation.model.product
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

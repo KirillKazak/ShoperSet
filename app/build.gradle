@@ -55,6 +55,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     //Room
     implementation "androidx.room:room-runtime:2.5.0"
+    implementation "androidx.room:room-ktx:2.5.0"
     kapt "androidx.room:room-compiler:2.5.0"
     //Koin
     implementation "io.insert-koin:koin-core:3.1.2"
@@ -63,15 +64,9 @@ dependencies {
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    //Dexter
-    implementation 'com.karumi:dexter:6.2.3'
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     kapt 'com.github.bumptech.glide:compiler:4.13.0'
-    //RxJava
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
-    implementation "android.arch.lifecycle:reactivestreams:1.1.1"
     //GSON
     implementation 'com.google.code.gson:gson:2.9.1'
     //Retrofit

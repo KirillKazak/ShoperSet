@@ -2,11 +2,15 @@ package com.kazak.kirill.shoperset.ui.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kazak.kirill.shoperset.domain.credentials.model.UserCredentialsModel
 import com.kazak.kirill.shoperset.domain.credentials.useCase.DeleteUserCredentialsUseCase
 import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserCredentialsByIdUseCase
 import com.kazak.kirill.shoperset.domain.credentials.useCase.SaveUserCredentialsUseCase
 import com.kazak.kirill.shoperset.util.UserId.Companion.currentUserId
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ProfileViewModel(
     private val deleteUserCredentialsUseCase: DeleteUserCredentialsUseCase,
@@ -15,16 +19,29 @@ class ProfileViewModel(
 ): ViewModel() {
     val currentUserCredentialsLiveData = MutableLiveData<UserCredentialsModel>()
 
-    fun deleteUserCredentials() {
-        deleteUserCredentialsUseCase.deleteUserCredentials()
+    init {
+        getCurrentUserCredentials()
     }
 
-    fun getCurrentUserCredentials() {
-        currentUserCredentialsLiveData.value =
-            getUserCredentialsByIdUseCase.getUserCredentialsById(currentUserId)
+    fun deleteUserCredentials() {
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteUserCredentialsUseCase.deleteUserCredentials()
+        }
+    }
+
+    private fun getCurrentUserCredentials() {
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                return@withContext getUserCredentialsByIdUseCase.getUserCredentialsById(currentUserId)
+            }
+            currentUserCredentialsLiveData.value = result
+        }
     }
 
     fun saveUserCredentials(userCredentialsModel: UserCredentialsModel) {
-        saveUserCredentialsUseCase.saveUserCredentials(userCredentialsModel)
+        viewModelScope.launch(Dispatchers.IO) {
+            saveUserCredentialsUseCase.saveUserCredentials(userCredentialsModel)
+            getCurrentUserCredentials()
+        }
     }
 }

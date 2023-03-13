@@ -4,6 +4,6 @@ import com.kazak.kirill.shoperset.domain.products.ProductsRepository
 
 class GetLatestSearchProductUseCase(private val productsRepository: ProductsRepository) {
 
-    fun getLatestSearchProduct() =
+    suspend fun getLatestSearchProduct() =
         productsRepository.getLatestSearchProducts()
 }

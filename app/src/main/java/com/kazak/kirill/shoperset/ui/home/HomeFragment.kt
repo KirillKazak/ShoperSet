@@ -23,8 +23,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.getLatestSearchProducts(vm.categoriesNameList)
-        vm.getSplashSaleProducts(vm.categoriesNameList)
+        vm.getProducts(vm.categoriesNameList)
         startLatestSearchRecycler()
         startFlashSaleRecycler()
         startCategory()
@@ -38,8 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         categoryAdapter.onCategoryItemClickListener = object : CategoryAdapter.OnCategoryItemClickListener {
             override fun onCategoryItemClick(activeCategories: List<String>) {
-                vm.getLatestSearchProducts(activeCategories)
-                vm.getSplashSaleProducts(activeCategories)
+                vm.getProducts(vm.categoriesNameList)
             }
         }
     }
@@ -89,11 +87,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun setUserPhotoToView() {
-        Glide.with(this@HomeFragment)
-            .load(vm.getUserPhoto())
-            .centerCrop()
-            .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .placeholder(R.drawable.icon_user_placeholder)
-            .into(vb.ivUserPhotoHome)
+        vm.getUserPhoto()
+
+        vm.userPhotoLD.observe(viewLifecycleOwner) {
+            Glide.with(this@HomeFragment)
+                .load(it)
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.icon_user_placeholder)
+                .into(vb.ivUserPhotoHome)
+        }
     }
 }

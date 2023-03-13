@@ -1,13 +1,13 @@
-package com.kazak.kirill.shoperset.data.latestSearch
+package com.kazak.kirill.shoperset.data.products
 
 import com.kazak.kirill.shoperset.data.api.ConfigApi
 import com.kazak.kirill.shoperset.domain.products.ProductsRepository
 
-class LatestSearchRepositoryImpl: ProductsRepository {
+class ProductsRepositoryImpl: ProductsRepository {
 
-    override fun getLatestSearchProducts() =
+    override suspend fun getLatestSearchProducts() =
         ConfigApi().api.getLatestSearchProducts()
 
-    override fun getFlashSaleProducts() =
+    override suspend fun getFlashSaleProducts() =
         ConfigApi().api.getFlashSaleProducts()
 }

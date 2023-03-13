@@ -25,4 +25,11 @@ object Constants {
 
     const val BUNDLE_PRODUCT_KEY = "product_info"
 
+    const val PHONES = "Phones"
+    const val HEADPHONES = "Headphones"
+    const val GAMES = "Games"
+    const val CARS = "Cars"
+    const val FURNITURE = "Furniture"
+    const val KIDS = "Kids"
+
 }

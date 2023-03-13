@@ -5,6 +5,6 @@ import com.kazak.kirill.shoperset.domain.searchingHint.SearchingHintRepository
 
 class SearchingHintRepositoryImpl: SearchingHintRepository {
 
-    override fun getSearchingHints() =
+    override suspend fun getSearchingHints() =
         ConfigApi().api.getSearchingHints()
 }

@@ -4,6 +4,6 @@ import com.kazak.kirill.shoperset.domain.searchingHint.SearchingHintRepository
 
 class GetSearchingHintsUseCase(private val searchingHintRepository: SearchingHintRepository) {
 
-    fun getSearchingHints() =
+    suspend fun getSearchingHints() =
         searchingHintRepository.getSearchingHints()
 }

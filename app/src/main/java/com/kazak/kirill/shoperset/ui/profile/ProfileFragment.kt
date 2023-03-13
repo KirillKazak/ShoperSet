@@ -32,8 +32,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         observeCurrentUserCredentialsLiveData()
-        vm.getCurrentUserCredentials()
-
         onItemLogOutClick()
         onBtnBackClick()
         onTvChangePhotoClick()
@@ -55,8 +53,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     userPhoto = uri.toString()
                 )
             )
-
-            vm.getCurrentUserCredentials()
         }
     }
 

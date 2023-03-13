@@ -9,19 +9,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.kazak.kirill.shoperset.R
-import com.kazak.kirill.shoperset.domain.Category
+import com.kazak.kirill.shoperset.domain.CategoryModel
 
 class CategoryAdapter(context: Context):
     RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     var onCategoryItemClickListener: OnCategoryItemClickListener? = null
 
     private val defaultListCategory = arrayListOf(
-        Category(R.drawable.icon_phone, context.getString(R.string.phones), true),
-        Category(R.drawable.icon_headphones, context.getString(R.string.headphones), true),
-        Category(R.drawable.icon_games, context.getString(R.string.games), true),
-        Category(R.drawable.icon_cars, context.getString(R.string.cars), true),
-        Category(R.drawable.icon_furniture, context.getString(R.string.furniture), true),
-        Category(R.drawable.icon_kids, context.getString(R.string.kids), true)
+        CategoryModel(R.drawable.icon_phone, context.getString(R.string.phones), true),
+        CategoryModel(R.drawable.icon_headphones, context.getString(R.string.headphones), true),
+        CategoryModel(R.drawable.icon_games, context.getString(R.string.games), true),
+        CategoryModel(R.drawable.icon_cars, context.getString(R.string.cars), true),
+        CategoryModel(R.drawable.icon_furniture, context.getString(R.string.furniture), true),
+        CategoryModel(R.drawable.icon_kids, context.getString(R.string.kids), true)
     )
 
     var categoryList = defaultListCategory

@@ -6,7 +6,7 @@ class DeleteUserCredentialsUseCase(
     private val userCredentialsRepository: UserCredentialsRepository
 ) {
 
-    fun deleteUserCredentials() {
+    suspend fun deleteUserCredentials() {
         userCredentialsRepository.deleteUserCredentials()
     }
 }

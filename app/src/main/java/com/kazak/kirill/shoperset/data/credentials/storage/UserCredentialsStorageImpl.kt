@@ -18,19 +18,19 @@ class UserCredentialsStorageImpl(context: Context): UserCredentialsStorage {
             .build()
     }
 
-    override fun getUserCredentialsList(): List<UserCredentialsEntity> =
+    override suspend fun getUserCredentialsList(): List<UserCredentialsEntity> =
         userCredentialsDatabase.userCredentialsItemDao().getUserCredentialsList()
 
-    override fun getUserCredentialsById(userId: Int): UserCredentialsEntity =
+    override suspend fun getUserCredentialsById(userId: Int): UserCredentialsEntity =
         userCredentialsDatabase.userCredentialsItemDao().getUserCredentialsById(userId)
 
 
-    override fun saveUserCredentials(userCredentials: UserCredentialsEntity) {
+    override suspend fun saveUserCredentials(userCredentials: UserCredentialsEntity) {
         userCredentialsDatabase.userCredentialsItemDao()
             .saveUserCredentials(userCredentials = userCredentials)
     }
 
-    override fun deleteUserCredentials() {
+    override suspend fun deleteUserCredentials() {
         userCredentialsDatabase.userCredentialsItemDao().deleteUserCredentials()
     }
 }
