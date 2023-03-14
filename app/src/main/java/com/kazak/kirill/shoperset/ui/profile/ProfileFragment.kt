@@ -14,7 +14,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentProfileBinding
-import com.kazak.kirill.shoperset.domain.credentials.model.UserCredentialsModel
 import com.kazak.kirill.shoperset.ui.MainActivity
 import com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
 import com.theartofdev.edmodo.cropper.CropImage
@@ -23,7 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
-    private var currentUserModel: UserCredentialsModel? = null
     private val vb: FragmentProfileBinding by viewBinding()
     private val vm by viewModel<ProfileViewModel>()
     private var uri = Uri.EMPTY
@@ -44,26 +42,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             uri = CropImage.getActivityResult(data).uri
 
-            vm.saveUserCredentials(
-                UserCredentialsModel(
-                    userId = currentUserModel?.userId ?: 0,
-                    userFirstName = currentUserModel?.userFirstName ?: getString(R.string.not_found),
-                    userLastName = currentUserModel?.userLastName ?: getString(R.string.not_found),
-                    userEmail = currentUserModel?.userEmail ?: getString(R.string.not_found),
-                    userPhoto = uri.toString()
-                )
-            )
+            vm.saveUserPhoto(uri.toString())
         }
     }
 
     @SuppressLint("SetTextI18n")
     private fun observeCurrentUserCredentialsLiveData() {
-        vm.currentUserCredentialsLiveData.observe(viewLifecycleOwner) {currentUserCredentials ->
+        vm.userNameAndPhotoLiveData.observe(viewLifecycleOwner) {currentUserCredentials ->
             with(vb) {
-                currentUserModel = currentUserCredentials
 
-                tvUserNameProfile.text =
-                    currentUserCredentials.userFirstName + " " + currentUserCredentials.userLastName
+                tvUserNameProfile.text = currentUserCredentials.userName
 
                 Glide.with(this@ProfileFragment)
                     .load(currentUserCredentials.userPhoto)

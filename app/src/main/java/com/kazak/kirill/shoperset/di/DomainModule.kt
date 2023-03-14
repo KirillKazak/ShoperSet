@@ -10,13 +10,12 @@ import org.koin.dsl.module
 val domainModule = module {
 
     //UserCredentials
-
-    factory<GetUserCredentialsByIdUseCase> {
-        GetUserCredentialsByIdUseCase(userCredentialsRepository = get())
+    factory<GetUserNameUseCase> {
+        GetUserNameUseCase(userCredentialsRepository = get())
     }
 
-    factory<SaveUserCredentialsUseCase> {
-        SaveUserCredentialsUseCase(userCredentialsRepository = get())
+    factory<SaveUserPhotoUseCase> {
+        SaveUserPhotoUseCase(userCredentialsRepository = get())
     }
 
     factory<DeleteUserCredentialsUseCase> {
@@ -30,13 +29,14 @@ val domainModule = module {
     factory<CheckUserCredentialsOnLogInUseCase> {
         CheckUserCredentialsOnLogInUseCase(userCredentialsRepository = get())
     }
+
     factory<GetUserPhotoUseCase> {
         GetUserPhotoUseCase(userCredentialsRepository = get())
     }
 
 
 
-
+    //Products
     factory<GetLatestSearchProductUseCase> {
         GetLatestSearchProductUseCase(productsRepository = get())
     }
