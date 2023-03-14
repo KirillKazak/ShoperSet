@@ -23,7 +23,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.getProducts(vm.categoriesNameList)
+        vm.getProducts(listOf())
         startLatestSearchRecycler()
         startFlashSaleRecycler()
         startCategory()

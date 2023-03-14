@@ -13,12 +13,6 @@ import com.kazak.kirill.shoperset.domain.productInformation.model.product.Produc
 import com.kazak.kirill.shoperset.domain.productInformation.useCase.GetProductInformationUseCase
 import com.kazak.kirill.shoperset.domain.searchingHint.model.SearchingHintModel
 import com.kazak.kirill.shoperset.domain.searchingHint.useCase.GetSearchingHintsUseCase
-import com.kazak.kirill.shoperset.util.Constants.CARS
-import com.kazak.kirill.shoperset.util.Constants.FURNITURE
-import com.kazak.kirill.shoperset.util.Constants.GAMES
-import com.kazak.kirill.shoperset.util.Constants.HEADPHONES
-import com.kazak.kirill.shoperset.util.Constants.KIDS
-import com.kazak.kirill.shoperset.util.Constants.PHONES
 import kotlinx.coroutines.*
 
 class HomeViewModel(
@@ -35,25 +29,23 @@ class HomeViewModel(
     val userPhotoLD = MutableLiveData<String>()
     var hintsLD = MutableLiveData<SearchingHintModel>()
 
-    val categoriesNameList = listOf(PHONES, HEADPHONES, GAMES, CARS, FURNITURE, KIDS)
+
 
     fun getProducts(activeCategories: List<String>) {
         viewModelScope.launch {
             val result = withContext(Dispatchers.IO) {
 
                 val latestSearchProducts = async {
-                    return@async getLatestSearchProductUseCase.getLatestSearchProduct()
-                        .latest.filter { activeCategories.contains(it.category) }
+                    return@async getLatestSearchProductUseCase.getLatestSearchProduct(activeCategories)
                 }
 
-                val splashSaleProducts = async {
-                    return@async getFlashSaleProductsUseCase.getFlashSaleProducts()
-                        .flash_sale.filter { activeCategories.contains(it.category) }
+                val flashSaleProducts = async {
+                    return@async getFlashSaleProductsUseCase.getFlashSaleProducts(activeCategories)
                 }
 
                 return@withContext ProductsModel(
                     latestSearchProducts.await(),
-                    splashSaleProducts.await()
+                    flashSaleProducts.await()
                 )
             }
             latestSearchProductsLD.postValue(result.latestModelList)

@@ -25,8 +25,9 @@ val appModule = module {
     viewModel<ProfileViewModel>{
         ProfileViewModel(
             deleteUserCredentialsUseCase = get(),
-            getUserCredentialsByIdUseCase = get(),
-            saveUserCredentialsUseCase = get()
+            getUserNameUseCase = get(),
+            getUserPhotoUseCase = get(),
+            saveUserPhotoUseCase = get()
         )
     }
 
