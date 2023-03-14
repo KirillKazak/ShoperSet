@@ -1,10 +1,10 @@
 package com.kazak.kirill.shoperset.di
 
-import com.kazak.kirill.shoperset.ui.home.HomeViewModel
-import com.kazak.kirill.shoperset.ui.logIn.LogInViewModel
-import com.kazak.kirill.shoperset.ui.product.ProductViewModel
-import com.kazak.kirill.shoperset.ui.profile.ProfileViewModel
-import com.kazak.kirill.shoperset.ui.signIn.SignInViewModel
+import com.kazak.kirill.shoperset.ui.fragments.home.HomeViewModel
+import com.kazak.kirill.shoperset.ui.fragments.logIn.LogInViewModel
+import com.kazak.kirill.shoperset.ui.fragments.product.ProductViewModel
+import com.kazak.kirill.shoperset.ui.fragments.profile.ProfileViewModel
+import com.kazak.kirill.shoperset.ui.fragments.signIn.SignInViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

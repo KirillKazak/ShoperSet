@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.kazak.kirill.shoperset.ui.home.HomeFragment"
+        android:name="com.kazak.kirill.shoperset.ui.fragments.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/productFragment"
-        android:name="com.kazak.kirill.shoperset.ui.product.ProductFragment"
+        android:name="com.kazak.kirill.shoperset.ui.fragments.product.ProductFragment"
         android:label="fragment_product"
         tools:layout="@layout/fragment_product" />
 </navigation>

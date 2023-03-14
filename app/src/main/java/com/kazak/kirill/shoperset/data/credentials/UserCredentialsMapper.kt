@@ -1,22 +1,11 @@
 package com.kazak.kirill.shoperset.data.credentials
 
-import com.kazak.kirill.shoperset.data.credentials.storage.entity.UserCredentialsEntity
+import com.kazak.kirill.shoperset.data.db.entity.UserCredentialsEntity
 import com.kazak.kirill.shoperset.domain.credentials.model.UserCredentialsModel
 
 class UserCredentialsMapper {
 
-    fun mapUserCredentialsModelToEntity(
-        userCredentialsModel: UserCredentialsModel
-    ): UserCredentialsEntity =
-        UserCredentialsEntity (
-            userId = userCredentialsModel.userId,
-            userFirstName = userCredentialsModel.userFirstName,
-            userLastName = userCredentialsModel.userLastName,
-            userEmail = userCredentialsModel.userEmail,
-            userPhoto = userCredentialsModel.userPhoto
-        )
-
-    fun mapUserCredentialsEntityToModel(
+    private fun mapUserCredentialsEntityToModel(
         userCredentialsEntity: UserCredentialsEntity
     ): UserCredentialsModel =
         UserCredentialsModel(

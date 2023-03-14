@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.messages.MessagesFragment">
+    tools:context=".ui.fragments.messages.MessagesFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Messages"/>
+        android:text="@string/messages"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

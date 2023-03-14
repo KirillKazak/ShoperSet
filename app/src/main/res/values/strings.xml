@@ -48,5 +48,8 @@
     <string name="color">Color</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
+    <string name="sign_in_is_success">Sign in is success</string>
+    <string name="log_in_is_success">Log in is success</string>
+    <string name="reviews">reviews</string>
 
 </resources>

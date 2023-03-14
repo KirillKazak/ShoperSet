@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/messagesFragment"
-        android:name="com.kazak.kirill.shoperset.ui.messages.MessagesFragment"
+        android:name="com.kazak.kirill.shoperset.ui.fragments.messages.MessagesFragment"
         android:label="fragment_messages"
         tools:layout="@layout/fragment_messages" />
 </navigation>

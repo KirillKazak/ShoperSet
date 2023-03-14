@@ -2,8 +2,8 @@ package com.kazak.kirill.shoperset.data.credentials.storage
 
 import android.content.Context
 import androidx.room.Room
-import com.kazak.kirill.shoperset.data.credentials.storage.entity.UserCredentialsEntity
-import com.kazak.kirill.shoperset.util.Constants.USER_CREDENTIALS_DATABASE_NAME
+import com.kazak.kirill.shoperset.data.db.entity.UserCredentialsEntity
+import com.kazak.kirill.shoperset.data.db.UserCredentialsDatabase
 
 class UserCredentialsStorageImpl(context: Context): UserCredentialsStorage {
 
@@ -32,5 +32,9 @@ class UserCredentialsStorageImpl(context: Context): UserCredentialsStorage {
 
     override suspend fun deleteUserCredentials() {
         userCredentialsDatabase.userCredentialsItemDao().deleteUserCredentials()
+    }
+
+    companion object {
+        const val USER_CREDENTIALS_DATABASE_NAME = "USER_CREDENTIALS_DATABASE"
     }
 }

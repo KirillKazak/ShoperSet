@@ -1,7 +1,7 @@
 package com.kazak.kirill.shoperset.data.credentials
 
 import com.kazak.kirill.shoperset.data.credentials.storage.UserCredentialsStorage
-import com.kazak.kirill.shoperset.data.credentials.storage.entity.UserCredentialsEntity
+import com.kazak.kirill.shoperset.data.db.entity.UserCredentialsEntity
 import com.kazak.kirill.shoperset.domain.credentials.UserCredentialsRepository
 import com.kazak.kirill.shoperset.domain.credentials.model.UserCredentialsModel
 

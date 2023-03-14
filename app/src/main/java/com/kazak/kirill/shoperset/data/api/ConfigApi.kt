@@ -1,6 +1,5 @@
 package com.kazak.kirill.shoperset.data.api
 
-import com.kazak.kirill.shoperset.util.Constants.BASE_API_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,6 +28,8 @@ class ConfigApi {
         }
 
 
-
+        companion object {
+            const val BASE_API_URL = "https://run.mocky.io"
+        }
 
 }

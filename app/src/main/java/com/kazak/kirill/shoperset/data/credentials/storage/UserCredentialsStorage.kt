@@ -1,6 +1,6 @@
 package com.kazak.kirill.shoperset.data.credentials.storage
 
-import com.kazak.kirill.shoperset.data.credentials.storage.entity.UserCredentialsEntity
+import com.kazak.kirill.shoperset.data.db.entity.UserCredentialsEntity
 
 interface UserCredentialsStorage {
 

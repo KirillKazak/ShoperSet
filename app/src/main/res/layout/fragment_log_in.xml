@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.logIn.LogInFragment">
+    tools:context=".ui.fragments.logIn.LogInFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_hor_15_log_in"

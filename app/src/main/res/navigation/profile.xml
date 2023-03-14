@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.kazak.kirill.shoperset.ui.profile.ProfileFragment"
+        android:name="com.kazak.kirill.shoperset.ui.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.profile.ProfileFragment">
+    tools:context=".ui.fragments.profile.ProfileFragment">
 
     <TextView
         android:id="@+id/tv_title_profile"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:ignore="UselessLeaf">
-            <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
+            <com.kazak.kirill.shoperset.ui.customViews.CustomViewItemProfile
                 android:id="@+id/item_tread_store"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                 app:visibility_balance="invisible"
                 android:layout_marginTop="@dimen/margin_large"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
-            <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
+            <com.kazak.kirill.shoperset.ui.customViews.CustomViewItemProfile
                 android:id="@+id/item_payment_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                 app:visibility_balance="invisible"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
-            <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
+            <com.kazak.kirill.shoperset.ui.customViews.CustomViewItemProfile
                 android:id="@+id/item_balance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
                 app:visibility_balance="visible"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
-            <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
+            <com.kazak.kirill.shoperset.ui.customViews.CustomViewItemProfile
                 android:id="@+id/item_trade_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                 app:visibility_balance="invisible"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
-            <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
+            <com.kazak.kirill.shoperset.ui.customViews.CustomViewItemProfile
                 android:id="@+id/item_restore_purchase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                 app:visibility_balance="invisible"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
-            <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
+            <com.kazak.kirill.shoperset.ui.customViews.CustomViewItemProfile
                 android:id="@+id/item_help"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                 app:visibility_balance="invisibleArrow"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
-            <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
+            <com.kazak.kirill.shoperset.ui.customViews.CustomViewItemProfile
                 android:id="@+id/item_log_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
