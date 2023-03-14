@@ -37,7 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         categoryAdapter.onCategoryItemClickListener = object : CategoryAdapter.OnCategoryItemClickListener {
             override fun onCategoryItemClick(activeCategories: List<String>) {
-                vm.getProducts(vm.categoriesNameList)
+                vm.getProducts(activeCategories)
             }
         }
     }

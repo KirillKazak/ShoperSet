@@ -36,7 +36,10 @@ class CustomViewItemProfile(context: Context, attrs: AttributeSet): LinearLayout
             if (visibilityBalance == "visible") {
                 ivArrow.visibility = View.INVISIBLE
                 tvBalanceScore.visibility = View.VISIBLE
-            } else  {
+            } else if (visibilityBalance == "invisibleArrow")  {
+                ivArrow.visibility = View.INVISIBLE
+                tvBalanceScore.visibility = View.INVISIBLE
+            } else {
                 ivArrow.visibility = View.VISIBLE
                 tvBalanceScore.visibility = View.INVISIBLE
             }

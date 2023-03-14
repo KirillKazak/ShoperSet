@@ -19,7 +19,6 @@ import com.kazak.kirill.shoperset.util.Constants.GAMES
 import com.kazak.kirill.shoperset.util.Constants.HEADPHONES
 import com.kazak.kirill.shoperset.util.Constants.KIDS
 import com.kazak.kirill.shoperset.util.Constants.PHONES
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.coroutines.*
 
 class HomeViewModel(
@@ -30,8 +29,6 @@ class HomeViewModel(
     private val getUserPhotoUseCase: GetUserPhotoUseCase
 ): ViewModel() {
 
-    private val compositeDisposable = CompositeDisposable()
-
     val latestSearchProductsLD = MutableLiveData<List<LatestModel>>()
     val flashSaleProductsLD = MutableLiveData<List<FlashSale>>()
     val productInformationLD = MutableLiveData<ProductModel>()
@@ -39,11 +36,6 @@ class HomeViewModel(
     var hintsLD = MutableLiveData<SearchingHintModel>()
 
     val categoriesNameList = listOf(PHONES, HEADPHONES, GAMES, CARS, FURNITURE, KIDS)
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
-    }
 
     fun getProducts(activeCategories: List<String>) {
         viewModelScope.launch {

@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 app:icon_item="@drawable/icon_help"
                 app:name_item="@string/help"
-                app:visibility_balance="invisible"
+                app:visibility_balance="invisibleArrow"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
             <com.kazak.kirill.shoperset.util.customViews.CustomViewItemProfile
@@ -171,7 +171,7 @@
                 android:focusable="true"
                 app:icon_item="@drawable/icon_log_out"
                 app:name_item="@string/log_out"
-                app:visibility_balance="invisible"
+                app:visibility_balance="invisibleArrow"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginHorizontal="@dimen/margin_extra_large"/>
         </LinearLayout>

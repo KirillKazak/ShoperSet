@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.kazak.kirill.shoperset.R
@@ -24,6 +25,7 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         arguments?.let {
             vm.informationAboutProductLD.value =
                 it.getParcelable(Constants.BUNDLE_PRODUCT_KEY)
@@ -34,6 +36,8 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
 
         btnMinusQuantity()
         btnPlusQuantity()
+
+        onBtnArrowBackClick()
     }
 
     @SuppressLint("SetTextI18n")
@@ -166,6 +170,12 @@ class ProductFragment : Fragment(R.layout.fragment_product) {
     private fun btnPlusQuantity() {
         vb.btnPlusQuantityProduct.setOnClickListener {
             vm.increaseQuantity()
+        }
+    }
+
+    private fun onBtnArrowBackClick() {
+        vb.ivArrowBackProduct.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 }
