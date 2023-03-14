@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.kazak.kirill.shoperset.R
 import com.kazak.kirill.shoperset.databinding.FragmentLogInBinding
 import com.kazak.kirill.shoperset.util.Constants.SUCCESS_LOG_IN_MESSAGE
@@ -73,13 +72,10 @@ class LogInFragment : Fragment(R.layout.fragment_log_in) {
 
     private fun startObserveLoginMessageLiveData() {
         vm.logInMessageLiveData.observe(viewLifecycleOwner) { message ->
-            val bottomNavigationView =
-                requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
-
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+
             if (message == SUCCESS_LOG_IN_MESSAGE) {
-                bottomNavigationView.visibility = View.VISIBLE
-                findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+                findNavController().navigate(R.id.action_logInFragment_to_tabsFragment)
             }
         }
     }

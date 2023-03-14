@@ -4,8 +4,8 @@ import com.kazak.kirill.shoperset.data.credentials.storage.entity.UserCredential
 
 interface UserCredentialsStorage {
 
-    fun getUserCredentialsList(): List<UserCredentialsEntity>
-    fun getUserCredentialsById(userId: Int): UserCredentialsEntity
-    fun saveUserCredentials(userCredentials: UserCredentialsEntity)
-    fun deleteUserCredentials()
+    suspend fun getUserCredentialsList(): List<UserCredentialsEntity>
+    suspend fun getUserCredentialsById(userId: Int): UserCredentialsEntity
+    suspend fun saveUserCredentials(userCredentials: UserCredentialsEntity)
+    suspend fun deleteUserCredentials()
 }

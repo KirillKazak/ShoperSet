@@ -11,14 +11,14 @@ import com.kazak.kirill.shoperset.util.Constants.USER_CREDENTIALS_TABLE_NAME
 interface UserCredentialsDao {
 
     @Query("SELECT * FROM $USER_CREDENTIALS_TABLE_NAME ORDER BY userId DESC")
-    fun getUserCredentialsList(): List<UserCredentialsEntity>
+    suspend fun getUserCredentialsList(): List<UserCredentialsEntity>
 
     @Query("SELECT * FROM $USER_CREDENTIALS_TABLE_NAME WHERE userId=:userId ")
-    fun getUserCredentialsById(userId: Int): UserCredentialsEntity
+    suspend fun getUserCredentialsById(userId: Int): UserCredentialsEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveUserCredentials(userCredentials: UserCredentialsEntity)
+    suspend fun saveUserCredentials(userCredentials: UserCredentialsEntity)
 
     @Query("DELETE FROM $USER_CREDENTIALS_TABLE_NAME")
-    fun deleteUserCredentials()
+    suspend fun deleteUserCredentials()
 }

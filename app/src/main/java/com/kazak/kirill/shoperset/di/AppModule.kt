@@ -35,7 +35,8 @@ val appModule = module {
             getLatestSearchProductUseCase = get(),
             getFlashSaleProductsUseCase = get(),
             getProductInformationUseCase = get(),
-            getSearchingHintsUseCase = get()
+            getSearchingHintsUseCase = get(),
+            getUserPhotoUseCase = get()
         )
     }
 

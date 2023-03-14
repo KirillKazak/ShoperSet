@@ -32,8 +32,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
 
         observeCurrentUserCredentialsLiveData()
-        vm.getCurrentUserCredentials()
-
         onItemLogOutClick()
         onBtnBackClick()
         onTvChangePhotoClick()
@@ -55,8 +53,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     userPhoto = uri.toString()
                 )
             )
-
-            vm.getCurrentUserCredentials()
         }
     }
 
@@ -103,7 +99,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
                 vm.deleteUserCredentials()
                 bottomNavigationView.visibility = View.GONE
-                findNavController().navigate(R.id.action_profileFragment_to_signInFragment)
+                requireActivity().startActivity(Intent(requireContext(), MainActivity::class.java))
             }
 
         }
@@ -111,7 +107,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun onBtnBackClick() {
         vb.ivArrowBackProfile.setOnClickListener {
-//            requireActivity().findNavController(R.id.nav_host_fragment).navigate(R.id.homeFragment)
+            findNavController().popBackStack()
         }
     }
 }

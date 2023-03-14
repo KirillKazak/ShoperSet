@@ -6,7 +6,7 @@ class CheckUserCredentialsOnLogInUseCase(
     private val userCredentialsRepository: UserCredentialsRepository
 ) {
 
-    fun checkUserCredentialsOnLogIn(
+    suspend fun checkUserCredentialsOnLogIn(
         firstName: String,
         password: String,
         errorMessage: (String) -> Unit

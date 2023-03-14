@@ -46,8 +46,6 @@
     <string name="add_to_card">ADD TO CARD</string>
     <string name="quantity">Quantity:</string>
     <string name="color">Color</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="minus">-</string>
     <string name="plus">+</string>
 

@@ -4,19 +4,20 @@ import com.kazak.kirill.shoperset.domain.credentials.model.UserCredentialsModel
 
 interface UserCredentialsRepository {
 
-    fun getUserCredentialsList(): List<UserCredentialsModel>
-    fun getUserCredentialsById(userId: Int) : UserCredentialsModel
-    fun saveUserCredentials(userCredentials: UserCredentialsModel)
-    fun deleteUserCredentials()
-    fun checkUserCredentialsOnSignIn(
+    suspend fun getUserCredentialsById(userId: Int) : UserCredentialsModel
+    suspend fun saveUserCredentials(userCredentials: UserCredentialsModel)
+    suspend fun deleteUserCredentials()
+    suspend fun checkUserCredentialsOnSignIn(
         firstName: String,
         lastName: String,
         email: String,
         errorMessage: (String) -> Unit
     )
-    fun checkUserCredentialsOnLogIn(
+    suspend fun checkUserCredentialsOnLogIn(
         firstName: String,
         password: String,
         errorMessage: (String) -> Unit
     )
+
+    suspend fun getUserPhoto(): String
 }

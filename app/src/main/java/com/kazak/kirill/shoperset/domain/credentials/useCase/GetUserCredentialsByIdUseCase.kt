@@ -6,6 +6,6 @@ class GetUserCredentialsByIdUseCase(
     private val userCredentialsRepository: UserCredentialsRepository
 ) {
 
-    fun getUserCredentialsById(userId: Int) =
+    suspend fun getUserCredentialsById(userId: Int) =
         userCredentialsRepository.getUserCredentialsById(userId)
 }

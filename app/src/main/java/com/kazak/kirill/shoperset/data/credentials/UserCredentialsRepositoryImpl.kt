@@ -24,25 +24,20 @@ class UserCredentialsRepositoryImpl(
 
     private val mapper = UserCredentialsMapper()
 
-    override fun getUserCredentialsList(): List<UserCredentialsModel> =
-        mapper.mapUserCredentialsEntityListToModelList(
-            userCredentialsStorage.getUserCredentialsList()
-        )
-
-    override fun getUserCredentialsById(userId: Int): UserCredentialsModel =
+    override suspend fun getUserCredentialsById(userId: Int): UserCredentialsModel =
         mapper.mapUserCredentialsEntityToModel(userCredentialsStorage.getUserCredentialsById(userId))
 
-    override fun saveUserCredentials(userCredentials: UserCredentialsModel) {
+    override suspend fun saveUserCredentials(userCredentials: UserCredentialsModel) {
         userCredentialsStorage.saveUserCredentials(
             mapper.mapUserCredentialsModelToEntity(userCredentials)
         )
     }
 
-    override fun deleteUserCredentials() {
+    override suspend fun deleteUserCredentials() {
         userCredentialsStorage.deleteUserCredentials()
     }
 
-    override fun checkUserCredentialsOnSignIn(
+    override suspend fun checkUserCredentialsOnSignIn(
         firstName: String,
         lastName: String,
         email: String,
@@ -82,7 +77,7 @@ class UserCredentialsRepositoryImpl(
         }
     }
 
-    override fun checkUserCredentialsOnLogIn(
+    override suspend fun checkUserCredentialsOnLogIn(
         firstName: String,
         password: String,
         errorMessage: (String) -> Unit
@@ -100,18 +95,26 @@ class UserCredentialsRepositoryImpl(
         }
     }
 
+    override suspend fun getUserPhoto() =
+        getUserCredentialsById(currentUserId).userPhoto
+
     private fun String.isEmailValid(): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 
-    private fun generateCredentialsId() : Int =
+    private suspend fun getUserCredentialsList(): List<UserCredentialsModel> =
+        mapper.mapUserCredentialsEntityListToModelList(
+            userCredentialsStorage.getUserCredentialsList()
+        )
+
+    private suspend fun generateCredentialsId() : Int =
         if (getUserCredentialsList().isEmpty()) {
             FIRST_USER_CREDENTIALS_ID
         } else {
             getUserCredentialsList().size + FIRST_USER_CREDENTIALS_ID
         }
 
-    private fun checkDoesUserWithThisCredentialsExist(
+    private suspend fun checkDoesUserWithThisCredentialsExist(
         firstName: String,
         lastName: String,
         email: String,
@@ -140,7 +143,7 @@ class UserCredentialsRepositoryImpl(
         return isExist
     }
 
-    private fun checkLoginWithFirstName(firstName: String, errorMessage: (String) -> Unit) {
+    private suspend fun checkLoginWithFirstName(firstName: String, errorMessage: (String) -> Unit) {
         val userCredentialsList = getUserCredentialsList()
         var isSuccess = false
 
