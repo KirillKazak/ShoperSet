@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kazak.kirill.shoperset.domain.credentials.useCase.CheckUserCredentialsOnSignInUseCase
 import com.kazak.kirill.shoperset.ui.fragments.Constants.ERROR
+import com.kazak.kirill.shoperset.ui.provideExceptionHandler
 import kotlinx.coroutines.*
 
 class SignInViewModel(
@@ -17,7 +18,7 @@ class SignInViewModel(
         lastName: String,
         email: String
     ) {
-        viewModelScope.launch {
+        viewModelScope.launch(provideExceptionHandler()) {
             val result = withContext(Dispatchers.IO) {
                 var toSend = ERROR
                 checkUserCredentialsOnSignInUseCase.checkUserCredentialsOnSignIn(
