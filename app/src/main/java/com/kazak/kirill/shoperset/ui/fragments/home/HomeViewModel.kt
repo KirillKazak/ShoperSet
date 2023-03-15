@@ -4,15 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kazak.kirill.shoperset.ui.objects.ProductsModel
-import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserPhotoUseCase
-import com.kazak.kirill.shoperset.domain.products.model.flashSale.FlashSale
-import com.kazak.kirill.shoperset.domain.products.model.latestSearch.LatestModel
-import com.kazak.kirill.shoperset.domain.products.useCase.GetFlashSaleProductsUseCase
-import com.kazak.kirill.shoperset.domain.products.useCase.GetLatestSearchProductUseCase
-import com.kazak.kirill.shoperset.domain.productInformation.model.product.ProductModel
-import com.kazak.kirill.shoperset.domain.productInformation.useCase.GetProductInformationUseCase
-import com.kazak.kirill.shoperset.domain.searchingHint.model.SearchingHintModel
-import com.kazak.kirill.shoperset.domain.searchingHint.useCase.GetSearchingHintsUseCase
+import com.kazak.kirill.domain.credentials.useCase.GetUserPhotoUseCase
+import com.kazak.kirill.domain.products.model.flashSale.FlashSale
+import com.kazak.kirill.domain.products.model.latestSearch.LatestModel
+import com.kazak.kirill.domain.products.useCase.GetFlashSaleProductsUseCase
+import com.kazak.kirill.domain.productInformation.model.product.ProductModel
+import com.kazak.kirill.domain.productInformation.useCase.GetProductInformationUseCase
+import com.kazak.kirill.domain.products.useCase.GetLatestSearchProductUseCase
+import com.kazak.kirill.domain.searchingHint.model.SearchingHintModel
+import com.kazak.kirill.domain.searchingHint.useCase.GetSearchingHintsUseCase
 import com.kazak.kirill.shoperset.ui.provideExceptionHandler
 import kotlinx.coroutines.*
 
@@ -23,13 +23,12 @@ class HomeViewModel(
     private val getSearchingHintsUseCase: GetSearchingHintsUseCase,
     private val getUserPhotoUseCase: GetUserPhotoUseCase
 ): ViewModel() {
+
     val latestSearchProductsLD = MutableLiveData<List<LatestModel>>()
     val flashSaleProductsLD = MutableLiveData<List<FlashSale>>()
     val productInformationLD = MutableLiveData<ProductModel>()
     val userPhotoLD = MutableLiveData<String>()
     var hintsLD = MutableLiveData<SearchingHintModel>()
-
-
 
     fun getProducts(activeCategories: List<String>) {
         viewModelScope.launch(provideExceptionHandler()) {

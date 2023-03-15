@@ -3,7 +3,7 @@ package com.kazak.kirill.shoperset.ui.fragments.signIn
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kazak.kirill.shoperset.domain.credentials.useCase.CheckUserCredentialsOnSignInUseCase
+import com.kazak.kirill.domain.credentials.useCase.CheckUserCredentialsOnSignInUseCase
 import com.kazak.kirill.shoperset.ui.fragments.Constants.ERROR
 import com.kazak.kirill.shoperset.ui.provideExceptionHandler
 import kotlinx.coroutines.*

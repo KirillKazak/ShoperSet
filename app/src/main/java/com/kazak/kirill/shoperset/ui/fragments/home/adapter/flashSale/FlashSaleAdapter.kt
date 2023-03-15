@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kazak.kirill.shoperset.databinding.ItemFlashSaleBinding
-import com.kazak.kirill.shoperset.domain.products.model.flashSale.FlashSale
+import com.kazak.kirill.domain.products.model.flashSale.FlashSale
 import com.kazak.kirill.shoperset.ui.extenshions.loadImageWithoutPlaceholder
 import com.kazak.kirill.shoperset.ui.fragments.Constants.DOLLARS
 import com.kazak.kirill.shoperset.ui.fragments.Constants.PERCENTS_OFF

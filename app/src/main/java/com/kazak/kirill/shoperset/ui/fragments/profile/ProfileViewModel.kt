@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kazak.kirill.shoperset.ui.objects.UserNameAndPhotoModel
-import com.kazak.kirill.shoperset.domain.credentials.useCase.DeleteUserCredentialsUseCase
-import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserNameUseCase
-import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserPhotoUseCase
-import com.kazak.kirill.shoperset.domain.credentials.useCase.SaveUserPhotoUseCase
+import com.kazak.kirill.domain.credentials.useCase.DeleteUserCredentialsUseCase
+import com.kazak.kirill.domain.credentials.useCase.GetUserNameUseCase
+import com.kazak.kirill.domain.credentials.useCase.GetUserPhotoUseCase
+import com.kazak.kirill.domain.credentials.useCase.SaveUserPhotoUseCase
 import com.kazak.kirill.shoperset.ui.provideExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

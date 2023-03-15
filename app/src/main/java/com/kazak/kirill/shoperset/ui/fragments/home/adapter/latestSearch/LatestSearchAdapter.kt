@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.kazak.kirill.shoperset.databinding.ItemLatestBinding
-import com.kazak.kirill.shoperset.domain.products.model.latestSearch.LatestModel
+import com.kazak.kirill.domain.products.model.latestSearch.LatestModel
 import com.kazak.kirill.shoperset.ui.extenshions.loadImageWithoutPlaceholder
 import com.kazak.kirill.shoperset.ui.fragments.Constants.DOLLARS
 
