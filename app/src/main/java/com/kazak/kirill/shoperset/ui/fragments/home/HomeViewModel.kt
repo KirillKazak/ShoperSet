@@ -4,15 +4,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kazak.kirill.shoperset.ui.objects.ProductsModel
-import com.kazak.kirill.shoperset.domain.credentials.useCase.GetUserPhotoUseCase
-import com.kazak.kirill.shoperset.domain.products.model.flashSale.FlashSale
-import com.kazak.kirill.shoperset.domain.products.model.latestSearch.LatestModel
-import com.kazak.kirill.shoperset.domain.products.useCase.GetFlashSaleProductsUseCase
-import com.kazak.kirill.shoperset.domain.products.useCase.GetLatestSearchProductUseCase
-import com.kazak.kirill.shoperset.domain.productInformation.model.product.ProductModel
-import com.kazak.kirill.shoperset.domain.productInformation.useCase.GetProductInformationUseCase
-import com.kazak.kirill.shoperset.domain.searchingHint.model.SearchingHintModel
-import com.kazak.kirill.shoperset.domain.searchingHint.useCase.GetSearchingHintsUseCase
+import com.kazak.kirill.domain.credentials.useCase.GetUserPhotoUseCase
+import com.kazak.kirill.domain.products.model.flashSale.FlashSale
+import com.kazak.kirill.domain.products.model.latestSearch.LatestModel
+import com.kazak.kirill.domain.products.useCase.GetFlashSaleProductsUseCase
+import com.kazak.kirill.domain.productInformation.model.product.ProductModel
+import com.kazak.kirill.domain.productInformation.useCase.GetProductInformationUseCase
+import com.kazak.kirill.domain.products.useCase.GetLatestSearchProductUseCase
+import com.kazak.kirill.domain.searchingHint.model.SearchingHintModel
+import com.kazak.kirill.domain.searchingHint.useCase.GetSearchingHintsUseCase
+import com.kazak.kirill.shoperset.ui.provideExceptionHandler
 import kotlinx.coroutines.*
 
 class HomeViewModel(
@@ -29,10 +30,8 @@ class HomeViewModel(
     val userPhotoLD = MutableLiveData<String>()
     var hintsLD = MutableLiveData<SearchingHintModel>()
 
-
-
     fun getProducts(activeCategories: List<String>) {
-        viewModelScope.launch {
+        viewModelScope.launch(provideExceptionHandler()) {
             val result = withContext(Dispatchers.IO) {
 
                 val latestSearchProducts = async {
@@ -54,7 +53,7 @@ class HomeViewModel(
     }
 
     fun getInformationAboutProduct() {
-        viewModelScope.launch {
+        viewModelScope.launch(provideExceptionHandler()) {
             val result = withContext(Dispatchers.IO) {
                 return@withContext getProductInformationUseCase.getProductInformation()
             }
@@ -64,7 +63,7 @@ class HomeViewModel(
     }
 
     fun getSearchingHints() {
-        viewModelScope.launch {
+        viewModelScope.launch(provideExceptionHandler()) {
             val result = withContext(Dispatchers.IO) {
                 return@withContext getSearchingHintsUseCase.getSearchingHints()
             }
@@ -74,7 +73,7 @@ class HomeViewModel(
     }
 
     fun getUserPhoto() {
-        viewModelScope.launch {
+        viewModelScope.launch(provideExceptionHandler()) {
             val result = withContext(Dispatchers.IO) {
                 return@withContext getUserPhotoUseCase.getUserPhoto()
             }

@@ -37,10 +37,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         vb.recyclerCategoryHome.adapter = categoryAdapter
 
-        categoryAdapter.onCategoryItemClickListener = object : CategoryAdapter.OnCategoryItemClickListener {
-            override fun onCategoryItemClick(activeCategories: List<String>) {
-                vm.getProducts(activeCategories)
-            }
+        categoryAdapter.onCategoryItemClickListener =
+            object : CategoryAdapter.OnCategoryItemClickListener {
+                override fun onCategoryItemClick(activeCategories: List<String>) {
+                    vm.getProducts(activeCategories)
+                }
         }
     }
 
