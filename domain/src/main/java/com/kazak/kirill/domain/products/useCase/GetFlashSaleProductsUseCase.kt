@@ -1,7 +1,6 @@
 package com.kazak.kirill.domain.products.useCase
 
 import com.kazak.kirill.domain.products.ProductsRepository
-import com.kazak.kirill.domain.products.model.CategoriesNamesModel
 import com.kazak.kirill.domain.products.model.flashSale.FlashSale
 import com.kazak.kirill.domain.products.model.flashSale.FlashSaleModel
 
@@ -15,7 +14,7 @@ class GetFlashSaleProductsUseCase(private val productsRepository: ProductsReposi
         activeCategories: List<String>
     ): List<FlashSale> {
 
-        var list = CategoriesNamesModel().categoriesNameList
+        var list = listOf<String>()
 
         if (activeCategories.isNotEmpty()) {
             list = activeCategories

@@ -1,4 +1,4 @@
-package com.kazak.kirill.domain.products.model
+package com.kazak.kirill.shoperset.ui.objects
 
 class CategoriesNamesModel {
     private val phones = "Phones"

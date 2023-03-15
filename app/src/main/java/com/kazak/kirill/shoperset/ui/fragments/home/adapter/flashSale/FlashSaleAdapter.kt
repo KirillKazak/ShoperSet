@@ -13,7 +13,7 @@ import com.kazak.kirill.shoperset.ui.fragments.Constants.PERCENTS_OFF
 class FlashSaleAdapter: RecyclerView.Adapter<FlashSaleHolder>() {
     var onItemClickListener: OnItemClickListener? = null
 
-    var flashSaleList = listOf<FlashSale>()
+    var flashSaleList = mutableListOf<FlashSale>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
@@ -40,6 +40,10 @@ class FlashSaleAdapter: RecyclerView.Adapter<FlashSaleHolder>() {
     }
 
     override fun getItemCount(): Int = flashSaleList.size
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 
     interface OnItemClickListener{
         fun onItemClick()

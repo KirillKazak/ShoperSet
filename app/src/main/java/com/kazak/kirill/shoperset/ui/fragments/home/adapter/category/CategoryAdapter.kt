@@ -46,6 +46,8 @@ class CategoryAdapter(context: Context):
             categoryList.forEach {
                 if (it.categoryName == categoryList[position].categoryName) {
                     it.isSelected = !it.isSelected
+                } else {
+                    it.isSelected = it.isSelected
                 }
             }
 

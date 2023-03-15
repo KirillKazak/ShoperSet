@@ -1,5 +1,6 @@
 package com.kazak.kirill.shoperset.ui.fragments.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -13,6 +14,7 @@ import com.kazak.kirill.shoperset.ui.fragments.Constants.BUNDLE_PRODUCT_KEY
 import com.kazak.kirill.shoperset.ui.fragments.home.adapter.category.CategoryAdapter
 import com.kazak.kirill.shoperset.ui.fragments.home.adapter.flashSale.FlashSaleAdapter
 import com.kazak.kirill.shoperset.ui.fragments.home.adapter.latestSearch.LatestSearchAdapter
+import com.kazak.kirill.shoperset.ui.objects.CategoriesNamesModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -25,12 +27,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.getProducts(listOf())
+
         startLatestSearchRecycler()
         startFlashSaleRecycler()
         startCategory()
         onSearchingProducts()
         setUserPhotoToView()
+
+        vm.getProducts(CategoriesNamesModel().categoriesNameList)
     }
 
     private fun startCategory() {
@@ -45,10 +49,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun startLatestSearchRecycler() {
         vm.latestSearchProductsLD.observe(viewLifecycleOwner) {
+
+            latestAdapter.latestSearchList.clear()
+            latestAdapter.latestSearchList.addAll(it)
+
             vb.recyclerLatestHome.adapter = latestAdapter
-            latestAdapter.latestSearchList = it
+            flashSaleAdapter.notifyDataSetChanged()
         }
 
         latestAdapter.onItemClickListener = object : LatestSearchAdapter.OnItemClickListener {
@@ -58,10 +67,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun startFlashSaleRecycler() {
         vm.flashSaleProductsLD.observe(viewLifecycleOwner) {
+
+            flashSaleAdapter.flashSaleList.clear()
+            flashSaleAdapter.flashSaleList.addAll(it)
+
             vb.recyclerFlashSaleHome.adapter = flashSaleAdapter
-            flashSaleAdapter.flashSaleList = it
+            flashSaleAdapter.notifyDataSetChanged()
         }
 
         flashSaleAdapter.onItemClickListener = object : FlashSaleAdapter.OnItemClickListener {

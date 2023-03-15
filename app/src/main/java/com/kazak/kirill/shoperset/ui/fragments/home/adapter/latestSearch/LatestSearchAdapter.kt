@@ -12,7 +12,7 @@ import com.kazak.kirill.shoperset.ui.fragments.Constants.DOLLARS
 class LatestSearchAdapter: RecyclerView.Adapter<LatestSearchHolder>() {
     var onItemClickListener: OnItemClickListener? = null
 
-    var latestSearchList = listOf<LatestModel>()
+    var latestSearchList = mutableListOf<LatestModel>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
             field = value
@@ -39,6 +39,10 @@ class LatestSearchAdapter: RecyclerView.Adapter<LatestSearchHolder>() {
     }
 
     override fun getItemCount(): Int = latestSearchList.size
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 
     interface OnItemClickListener{
         fun onItemClick()
