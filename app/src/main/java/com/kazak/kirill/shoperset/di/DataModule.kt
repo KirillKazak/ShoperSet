@@ -27,9 +27,9 @@ val dataModule = module {
 
 
 
-    single<ProductsRepository> { ProductsRepositoryImpl() }
+    single<ProductsRepository> { ProductsRepositoryImpl(configApi = get()) }
 
-    single<ProductInformationRepository> {ProductInformationRepositoryImpl() }
+    single<ProductInformationRepository> {ProductInformationRepositoryImpl(configApi = get()) }
 
-    single<SearchingHintRepository> { SearchingHintRepositoryImpl() }
+    single<SearchingHintRepository> { SearchingHintRepositoryImpl(configApi = get()) }
 }
