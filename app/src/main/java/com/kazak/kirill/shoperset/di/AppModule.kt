@@ -1,6 +1,5 @@
 package com.kazak.kirill.shoperset.di
 
-import com.kazak.kirill.data.api.ConfigApi
 import com.kazak.kirill.shoperset.ui.fragments.home.HomeViewModel
 import com.kazak.kirill.shoperset.ui.fragments.logIn.LogInViewModel
 import com.kazak.kirill.shoperset.ui.fragments.product.ProductViewModel
@@ -44,9 +43,5 @@ val appModule = module {
 
     viewModel<ProductViewModel>{
         ProductViewModel()
-    }
-
-    single<ConfigApi> {
-        ConfigApi()
     }
 }
